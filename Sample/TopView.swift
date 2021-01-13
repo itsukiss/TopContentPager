@@ -15,7 +15,7 @@ class TopView: UIView, ContentTopProtocol {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        tabView.itemViewHeight = tabViewHeight
+        tabView.update(pagerOptions: .init(itemHeight: tabViewHeight))
         tabView.autoresizingMask = .flexibleWidth
         tabView.frame = CGRect(x: 0, y: self.frame.height - tabViewHeight, width: self.frame.width, height: tabViewHeight)
         self.addSubview(tabView)

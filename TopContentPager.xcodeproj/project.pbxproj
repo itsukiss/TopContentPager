@@ -206,7 +206,6 @@
 				84BB338625A85FBC0056A35F /* ContentTopProtocol.swift */,
 				84BB338025A85FBC0056A35F /* TopContentPagerViewController.storyboard */,
 				84BB338925A85FBC0056A35F /* TopContentPagerViewController.swift */,
-				84BB33E425A86B870056A35F /* PagerOptions.swift */,
 				84BB332E25A85EEF0056A35F /* TopContentPager.h */,
 				84BB332F25A85EEF0056A35F /* Info.plist */,
 			);
@@ -279,6 +278,7 @@
 				84BB33D825A86B450056A35F /* PagerItemsView.swift */,
 				84BB33F025A872ED0056A35F /* PagerItemView.swift */,
 				843FD8BA25AEAAF200AD615F /* PagerItemView.xib */,
+				84BB33E425A86B870056A35F /* PagerOptions.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

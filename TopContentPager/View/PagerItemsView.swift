@@ -18,16 +18,17 @@ public struct PagerItem {
 
 final public class PagerItemsView: UIView {
 
-    public var indicatorHeight: CGFloat = 2.0
-    public var indicatorMinWidth: CGFloat = 0
-    public var itemViewHeight: CGFloat = 20.0
-    public var lineHeight: CGFloat = 2.0
+    private var indicatorHeight: CGFloat = 2.0
+    private var indicatorMinWidth: CGFloat = 0
+    private var itemViewHeight: CGFloat = 20.0
+    private var lineHeight: CGFloat = 2.0
+    private var indicatorSideSpace: CGFloat = 0
 
     public var items: [PagerItem] = []
     public var itemViews: [PagerItemView] = []
+    public private(set) var options: PagerOptions = .init()
 
     private var indicator: UIView!
-    private var indicatorPosition: CGFloat = 0.0
     private var frontView: UIView!
     private var lineView: UIView!
     private var maskLayer: CALayer!
@@ -44,16 +45,36 @@ final public class PagerItemsView: UIView {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    public func update(pagerOptions: PagerOptions) {
-        self.frame.size.height = pagerOptions.itemHeight
-        self.backgroundColor = pagerOptions.backgroundColor
-        self.frontView.backgroundColor = pagerOptions.itemColor
-        self.lineView.backgroundColor = pagerOptions.lineColor
-        self.indicator.backgroundColor = pagerOptions.indicatorColor
+    
+    public func update(pagerOptions: UpdatePagerOptions) {
+        options.itemHeight = pagerOptions.itemHeight ?? options.itemHeight
+        options.indicatorHeight = pagerOptions.indicatorHeight ?? options.indicatorHeight
+        options.indicatorColor = pagerOptions.indicatorColor ?? options.indicatorColor
+        options.activeBackgroundColor = pagerOptions.activeBackgroundColor ?? options.activeBackgroundColor
+        options.backgroundColor = pagerOptions.backgroundColor ?? options.backgroundColor
+        options.lineColor = pagerOptions.lineColor ?? options.lineColor
+        options.deactiveLabelColor = pagerOptions.deactiveLabelColor ?? options.deactiveLabelColor
+        options.activeLabelColor = pagerOptions.activeLabelColor ?? options.activeLabelColor
+        options.indicatorSideSpace = pagerOptions.indicatorSideSpace ?? options.indicatorSideSpace
+        updateView()
     }
 
-    public func addItem(item: PagerItem) {
+    func updateView() {
+        self.frame.size.height = options.itemHeight
+        self.itemViewHeight = options.itemHeight
+        self.indicatorHeight = options.indicatorHeight
+        self.backgroundColor = options.backgroundColor
+        self.indicatorSideSpace = options.indicatorSideSpace
+        self.lineView.backgroundColor = options.lineColor
+        self.indicator.backgroundColor = options.indicatorColor
+        itemViews.forEach { itemView in
+            itemView.activeColor = options.activeLabelColor
+            itemView.deactveColor = options.deactiveLabelColor
+            itemView.activeBackgroundColor = options.activeBackgroundColor
+        }
+    }
+
+    func addItem(item: PagerItem) {
         self.items.append(item)
         let itemView = PagerItemView.instantiate()
         itemView.frame.size.height = self.bounds.height
@@ -61,22 +82,21 @@ final public class PagerItemsView: UIView {
         itemView.configure(with: item)
         self.itemViews.append(itemView)
         self.addSubview(itemView)
-
         self.setNeedsLayout()
+        updateView()
     }
 
-    public func adjustIndicator(rate: CGFloat) {
-        self.indicatorPosition = rate
-        self.indicator.frame.size.width = self.indicatorWidth
+    func adjustIndicator() {
+        self.indicator.frame.size.width = self.indicatorWidth - (self.indicatorSideSpace * 2)
     }
 
-    public func adjustSelected(page: Int) {
+    func adjustSelected(page: Int) {
         self.itemViews.forEach {
             $0.isSelected = false
         }
         self.itemViews[safe: page]?.isSelected = true
         UIView.animate(withDuration: 0.1, delay: 0, options: .beginFromCurrentState, animations: {
-            self.indicator.frame.origin.x = CGFloat(page) * self.indicatorWidth
+            self.indicator.frame.origin.x = (CGFloat(page) * self.indicatorWidth) + self.indicatorSideSpace
         }, completion: nil)
     }
 
@@ -89,21 +109,18 @@ final public class PagerItemsView: UIView {
 
         for (i, view) in self.itemViews.enumerated() {
             let itemMaxWidth: CGFloat = self.frame.size.width / max(CGFloat(self.items.count), 1)
-
-            // 座標計算
-            view.center.x = itemMaxWidth * CGFloat(i) + itemMaxWidth * 0.5
-            view.center.y = self.itemViewHeight * 0.5
+            view.frame = CGRect(x: itemMaxWidth * CGFloat(i), y: 0, width: self.indicatorWidth, height: itemViewHeight - lineHeight)
         }
 
         self.frontView.frame = self.bounds
 
         self.indicator.frame = CGRect(
-            x: 0.0, y: self.frame.size.height - self.indicatorHeight,
+            x: 0, y: self.frame.size.height - self.indicatorHeight,
             width: self.indicatorWidth, height: self.indicatorHeight
         )
         self.lineView.frame = CGRect(x: 0, y: self.frame.size.height - lineHeight, width: self.frame.width, height: lineHeight)
         self.maskLayer.frame = CGRect(x: 0, y: self.frame.size.height - lineHeight, width: self.frame.width, height: lineHeight)
-        self.adjustIndicator(rate: self.indicatorPosition)
+        self.adjustIndicator()
     }
 }
 
@@ -118,7 +135,7 @@ private extension PagerItemsView {
 
         self.indicator = UIView(frame:
             CGRect(
-                x: 0.0, y: self.frame.size.height - self.indicatorHeight,
+                x: 0, y: self.frame.size.height - self.indicatorHeight,
                 width: self.indicatorWidth, height: self.indicatorHeight
             )
         )

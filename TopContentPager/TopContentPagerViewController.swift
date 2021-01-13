@@ -66,10 +66,10 @@ public final class TopContentPagerViewController: UIViewController, UIGestureRec
         }
     }
     private lazy var setupLayout: Void = {
-        topView.tabView.update(pagerOptions: .init())
         tabBarTitles.map { PagerItem(title: $0) }.forEach { topView.tabView.addItem(item: $0) }
         selectedIndex = 0
         topView.tabView.adjustSelected(page: selectedIndex)
+        topView.tabView.update(pagerOptions: .init())
         topView.isUserInteractionEnabled = true
         let tabBarTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapTab(_:)))
         tabBarTapRecognizer.delegate = self
@@ -167,7 +167,7 @@ public final class TopContentPagerViewController: UIViewController, UIGestureRec
     @objc
     private func tapTab(_ sender: UITapGestureRecognizer) {
         let position = sender.location(in: self.topView.tabView)
-        if position.y < self.topView.tabView.frame.size.height - self.topView.tabView.itemViewHeight {
+        if position.y < self.topView.tabView.frame.size.height - self.topView.tabView.options.itemHeight {
             return
         }
         
