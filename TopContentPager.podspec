@@ -9,4 +9,5 @@ Pod::Spec.new do |spec|
   spec.swift_version  = "5.0"
   spec.source         = { :git => "https://github.com/itsukiss/TopContentPager.git", :tag => "#{spec.version}" }
   spec.source_files   = "TopContentPager/**/*.swift"
+  spec.resource_bundles = { 'TopContentPager' => ['TopContentPager/**/*.{storyboard, xib}'] }
 end
