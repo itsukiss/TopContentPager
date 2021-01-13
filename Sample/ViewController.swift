@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         let topContentVC = TopContentPagerViewController
             .create(with: .init(
-                        topViewType: TopView.self,
+                        topView: TopView.instantiate(),
                         pageItems: [
                             .init(title: "Page1", viewController: Page1ViewController.create()),
                             .init(title: "Page2", viewController: Page2ViewController.create())

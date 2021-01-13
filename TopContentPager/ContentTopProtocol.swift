@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol ContentTopProtocol: UIView {
-    static func tabViewHeight() -> CGFloat
-    static func estimateHeight() -> CGFloat
+    var tabViewHeight: CGFloat { get set }
+    var estimateHeight: CGFloat { get set }
     var tabView: PagerItemsView! { get set }
 }

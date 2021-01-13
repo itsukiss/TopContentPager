@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class TopContentPagerViewController: UIViewController {
+public final class TopContentPagerViewController: UIViewController, UIGestureRecognizerDelegate {
 
     public struct PageItem {
         public let title: String
@@ -21,24 +21,24 @@ public final class TopContentPagerViewController: UIViewController {
     }
 
     public struct Input {
-        public let topViewType: ContentTopProtocol.Type
+        public let topView: ContentTopProtocol
         public let pageItems: [PageItem]
         
-        public init(topViewType: ContentTopProtocol.Type, pageItems: [PageItem]) {
-            self.topViewType = topViewType
+        public init(topView: ContentTopProtocol, pageItems: [PageItem]) {
+            self.topView = topView
             self.pageItems = pageItems
         }
     }
 
     public static func create(with input: Input) -> Self {
         let vc = Storyboard.instantiate(self)
-        vc.topView = input.topViewType.instantiate()
-        vc.topView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: input.topViewType.estimateHeight())
-        vc.tabHeight = input.topViewType.tabViewHeight()
-        vc.headerHeight = input.topViewType.estimateHeight()
+        vc.topView = input.topView
+        vc.topView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: input.topView.estimateHeight)
+        vc.tabHeight = input.topView.tabViewHeight
+        vc.headerHeight = input.topView.estimateHeight
         input.pageItems.forEach { item in
             vc.tabBarTitles.append(item.title)
-            let contentVC = ContentTableViewController.create(with: .init(topViewType: input.topViewType, viewController: item.viewController))
+            let contentVC = ContentTableViewController.create(with: .init(topView: input.topView, viewController: item.viewController))
             vc.viewControllers.append(contentVC)
         }
         return vc
@@ -52,7 +52,6 @@ public final class TopContentPagerViewController: UIViewController {
     private var containerViews: [UIView] = []
     private var viewControllers: [ContentTableViewController] = []
     private var tabBarTitles: [String] = []
-    private let tabBarTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapTab(_:)))
     public var selectedIndex: Int = 0 {
         didSet {
             addContentViewToEscapeView()
@@ -71,6 +70,9 @@ public final class TopContentPagerViewController: UIViewController {
         tabBarTitles.map { PagerItem(title: $0) }.forEach { topView.tabView.addItem(item: $0) }
         selectedIndex = 0
         topView.tabView.adjustSelected(page: selectedIndex)
+        topView.isUserInteractionEnabled = true
+        let tabBarTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapTab(_:)))
+        tabBarTapRecognizer.delegate = self
         topView.tabView.addGestureRecognizer(tabBarTapRecognizer)
     }()
 
@@ -84,7 +86,9 @@ public final class TopContentPagerViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        addRxObserver()
+        viewControllers.forEach { vc in
+            vc.delegate = self
+        }
     }
 
     public override func viewDidLayoutSubviews() {
@@ -158,25 +162,6 @@ public final class TopContentPagerViewController: UIViewController {
             escapeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             escapeView.heightAnchor.constraint(equalToConstant: headerHeight)
         ])
-    }
-
-    private func addRxObserver() {
-        viewControllers.forEach { vc in
-            vc.delegate = self
-        }
-//
-//        tabBarTapRecognizer.rx.event
-//            .subscribe(onNext: { [weak self] recognizer in
-//                guard let self = self else { return }
-//                let position = recognizer.location(in: self.topView.tabView)
-//                if position.y < self.topView.tabView.frame.size.height - self.topView.tabView.itemViewHeight {
-//                    return
-//                }
-//
-//                let index = Int(floor(position.x / (self.topView.tabView.frame.size.width / max(CGFloat(self.topView.tabView.items.count), 1))))
-//                self.selectedIndex = index
-//            })
-//            .disposed(by: disposeBag)
     }
     
     @objc

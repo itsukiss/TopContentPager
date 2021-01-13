@@ -9,22 +9,15 @@ import UIKit
 import TopContentPager
 
 class TopView: UIView, ContentTopProtocol {
-    static func tabViewHeight() -> CGFloat {
-        44
-    }
-    
-    static func estimateHeight() -> CGFloat {
-        300
-    }
-    
+    var tabViewHeight: CGFloat = 44
+    var estimateHeight: CGFloat = 300
     var tabView: PagerItemsView! = PagerItemsView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = .blue
-        tabView.itemViewHeight = TopView.tabViewHeight()
+        tabView.itemViewHeight = tabViewHeight
         tabView.autoresizingMask = .flexibleWidth
-        tabView.frame = CGRect(x: 0, y: self.frame.height - TopView.tabViewHeight(), width: self.frame.width, height: TopView.tabViewHeight())
+        tabView.frame = CGRect(x: 0, y: self.frame.height - tabViewHeight, width: self.frame.width, height: tabViewHeight)
         self.addSubview(tabView)
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 final class Storyboard {
 
-    public static func instantiate<T: UIViewController>(_ type: T.Type) -> T {
+    static func instantiate<T: UIViewController>(_ type: T.Type) -> T {
         let storyboardName = String(describing: type)
         let sb = UIStoryboard(name: storyboardName, bundle: Bundle(for: type))
         let vc = sb.instantiateInitialViewController() as! T

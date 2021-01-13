@@ -34,18 +34,18 @@ public final class ContentTableViewController: UIViewController {
             self?.tableView.reloadData()
         }
     }()
-    public private(set) var topViewType: ContentTopProtocol.Type!
+    public private(set) var topView: ContentTopProtocol!
     private var bodyContentHeight: CGFloat = 0
 
     public struct Input {
-        let topViewType: ContentTopProtocol.Type
+        let topView: ContentTopProtocol
         let viewController: ContentTableBody
     }
 
     public static func create(with input: Input) -> Self {
         let vc = Storyboard.instantiate(self)
         vc.viewController = input.viewController
-        vc.topViewType = input.topViewType
+        vc.topView = input.topView
         return vc
     }
 
@@ -108,14 +108,14 @@ extension ContentTableViewController: UITableViewDataSource {
 extension ContentTableViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return topViewType.estimateHeight()
+            return topView.estimateHeight
         } else {
             return bodyContentHeight
         }
     }
     public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return topViewType.estimateHeight()
+            return topView.estimateHeight
         } else {
             return bodyContentHeight
         }
