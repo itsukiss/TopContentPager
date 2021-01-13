@@ -24,7 +24,6 @@ public final class ContentTableViewController: UIViewController {
 
     private var observation: NSKeyValueObservation?
     weak var delegate: ContentTableViewDelegate?
-    private var dataSource: ContentTableDataSource!
     public private(set) var viewController: ContentTableBody!
     lazy var setupContentHeight: Void = {
         observation = nil
@@ -52,8 +51,6 @@ public final class ContentTableViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource = ContentTableDataSource(bodyViewController: viewController, topViewType: topViewType)
-        dataSource.setup(tableView: tableView)
         setup()
     }
 
