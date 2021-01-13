@@ -10,11 +10,16 @@ import UIKit
 
 public protocol ContentTableBody: UIViewController {
     var scrollView: UIScrollView! { get }
-    var moveIndex: Int { get }
+    var delegate: ContentTableBodyDelegate? { get set }
+    func refresh(sender: UIRefreshControl, contentViewController: ContentTableViewController) -> Bool
 }
 
 public extension ContentTableBody {
-    var moveIndex: Int {
-        0
+    func refresh(sender: UIRefreshControl, contentViewController: ContentTableViewController) -> Bool {
+        return false
     }
+}
+
+public protocol ContentTableBodyDelegate: class {
+    func selectedIndex(index: Int)
 }

@@ -9,6 +9,8 @@ import UIKit
 import TopContentPager
 
 final class Page2ViewController: UIViewController, ContentTableBody {
+    weak var delegate: ContentTableBodyDelegate?
+    
     var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -23,6 +25,7 @@ final class Page2ViewController: UIViewController, ContentTableBody {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,5 +43,11 @@ extension Page2ViewController: UITableViewDataSource {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "p2Cell")
         cell.textLabel?.text = "item\(indexPath.row)"
         return cell
+    }
+}
+
+extension Page2ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.selectedIndex(index: 0)
     }
 }

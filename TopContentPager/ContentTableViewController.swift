@@ -18,11 +18,9 @@ public protocol ContentTableViewDelegate: class {
 public final class ContentTableViewController: UIViewController {
 
     @IBOutlet public weak var tableView: ContentInnerTableView!
-    var moveIndex: Int {
-        viewController.moveIndex
-    }
-
+ 
     private var observation: NSKeyValueObservation?
+    private var refreshControl = UIRefreshControl()
     weak var delegate: ContentTableViewDelegate?
     public private(set) var viewController: ContentTableBody!
     lazy var setupContentHeight: Void = {
@@ -65,9 +63,17 @@ public final class ContentTableViewController: UIViewController {
         tableView.separatorColor = .clear
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.refreshControl = viewController.refresh(sender: refreshControl, contentViewController: self) ? refreshControl : nil
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+        
+        viewController.delegate = self
         
         addChild(viewController)
         viewController.didMove(toParent: self)
+    }
+    
+    @objc func refresh(sender: UIRefreshControl) {
+        viewController.refresh(sender: sender, contentViewController: self)
     }
 }
 
@@ -119,6 +125,12 @@ extension ContentTableViewController: UITableViewDelegate {
         } else {
             return bodyContentHeight
         }
+    }
+}
+
+extension ContentTableViewController: ContentTableBodyDelegate {
+    public func selectedIndex(index: Int) {
+        delegate?.moveIndex(index: index)
     }
 }
 
