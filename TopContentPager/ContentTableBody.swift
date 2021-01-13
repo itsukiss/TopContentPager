@@ -11,7 +11,7 @@ import UIKit
 public protocol ContentTableBody: UIViewController {
     var scrollView: UIScrollView! { get }
     var delegate: ContentTableBodyDelegate? { get set }
-    func refresh(sender: UIRefreshControl, contentViewController: ContentTableViewController) -> Bool
+    @discardableResult func refresh(sender: UIRefreshControl, contentViewController: ContentTableViewController) -> Bool
 }
 
 public extension ContentTableBody {
