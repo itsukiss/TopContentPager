@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
   spec.homepage       = "https://github.com/itsukiss/TopContentPager"
   spec.license        = { :type => 'MIT', :file => 'LICENSE' }
   spec.author         = "itsukiss"
-  spec.platform       = :ios, "10.0"
+  spec.platform       = :ios, "11.0"
   spec.swift_version  = "5.0"
   spec.source         = { :git => "https://github.com/itsukiss/TopContentPager.git", :tag => "#{spec.version}" }
   spec.source_files   = "TopContentPager/**/*.swift"
