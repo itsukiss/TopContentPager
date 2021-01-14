@@ -16,13 +16,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let topContentVC = TopContentPagerViewController
-            .create(with: .init(
-                        topView: TopView.instantiate(),
-                        pageItems: [
-                            .init(title: "Page1", viewController: Page1ViewController.create()),
-                            .init(title: "Page2", viewController: Page2ViewController.create())
-                        ]))
+        let topContentVC = CustomTopContentPagerViewController()
         topContentVC.modalPresentationStyle = .fullScreen
         present(topContentVC, animated: true, completion: nil)
     }

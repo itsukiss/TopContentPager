@@ -8,50 +8,18 @@
 
 import UIKit
 
-public final class TopContentPagerViewController: UIViewController, UIGestureRecognizerDelegate {
+public protocol TopContentPagerDataSource: class {
+    func topContentPagerViewControllerTopContentView(_ viewController: TopContentPagerViewController) -> ContentTopProtocol
+    func topContentPagerViewControllerTabTitles(_ viewController: TopContentPagerViewController) -> [String]
+    func topContentPagerViewControllerViewControllers(_ viewController: TopContentPagerViewController) -> [ContentTableBody]
+}
 
-    public struct PageItem {
-        public let title: String
-        public let viewController: ContentTableBody
-        
-        public init(title: String, viewController: ContentTableBody) {
-            self.title = title
-            self.viewController = viewController
-        }
+open class TopContentPagerViewController: UIViewController, UIGestureRecognizerDelegate {
+    
+    public weak var dataSource: TopContentPagerDataSource?
+    public var selectedViewController: ContentTableViewController {
+            viewControllers[selectedIndex]
     }
-
-    public struct Input {
-        public let topView: ContentTopProtocol
-        public let pageItems: [PageItem]
-        
-        public init(topView: ContentTopProtocol, pageItems: [PageItem]) {
-            self.topView = topView
-            self.pageItems = pageItems
-        }
-    }
-
-    public static func create(with input: Input) -> Self {
-        let vc = Storyboard.instantiate(self)
-        vc.topView = input.topView
-        vc.topView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: input.topView.estimateHeight)
-        vc.tabHeight = input.topView.tabViewHeight
-        vc.headerHeight = input.topView.estimateHeight
-        input.pageItems.forEach { item in
-            vc.tabBarTitles.append(item.title)
-            let contentVC = ContentTableViewController.create(with: .init(topView: input.topView, viewController: item.viewController))
-            vc.viewControllers.append(contentVC)
-        }
-        return vc
-    }
-
-    private let scrollView = UIScrollView()
-    private let scrollContainerView = UIView()
-    public var topView: ContentTopProtocol!
-    private let escapeView = UIView()
-    private var escapeViewTopConstraint: NSLayoutConstraint?
-    private var containerViews: [UIView] = []
-    private var viewControllers: [ContentTableViewController] = []
-    private var tabBarTitles: [String] = []
     public var selectedIndex: Int = 0 {
         didSet {
             addContentViewToEscapeView()
@@ -65,6 +33,18 @@ public final class TopContentPagerViewController: UIViewController, UIGestureRec
             }
         }
     }
+    
+    public private(set) var tabHeight: CGFloat!
+    public private(set) var headerHeight: CGFloat!
+
+    private var viewControllers: [ContentTableViewController] = []
+    private var topView: ContentTopProtocol!
+    private let scrollView = UIScrollView()
+    private let scrollContainerView = UIView()
+    private let escapeView = UIView()
+    private var escapeViewTopConstraint: NSLayoutConstraint?
+    private var containerViews: [UIView] = []
+    private var tabBarTitles: [String] = []
     private lazy var setupLayout: Void = {
         tabBarTitles.map { PagerItem(title: $0) }.forEach { topView.tabView?.addItem(item: $0) }
         selectedIndex = 0
@@ -76,27 +56,34 @@ public final class TopContentPagerViewController: UIViewController, UIGestureRec
         topView.tabView?.addGestureRecognizer(tabBarTapRecognizer)
     }()
 
-    public var selectedViewController: ContentTableViewController {
-            viewControllers[selectedIndex]
-    }
-
-    public private(set) var tabHeight: CGFloat!
-    public private(set) var headerHeight: CGFloat!
-
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
+        setupDataSource()
         setup()
         viewControllers.forEach { vc in
             vc.delegate = self
         }
     }
 
-    public override func viewDidLayoutSubviews() {
+    open override func viewDidLayoutSubviews() {
         super.viewWillLayoutSubviews()
         _ = setupLayout
     }
+    
+    open func setupDataSource() { }
 
     private func setup() {
+        topView = dataSource?.topContentPagerViewControllerTopContentView(self)
+        topView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: topView.estimateHeight)
+        tabHeight = topView.tabViewHeight
+        headerHeight = topView.estimateHeight
+        tabBarTitles = dataSource?.topContentPagerViewControllerTabTitles(self) ?? []
+        
+        dataSource?.topContentPagerViewControllerViewControllers(self).forEach { item in
+            let contentVC = ContentTableViewController.create(with: .init(topView: topView, viewController: item))
+            viewControllers.append(contentVC)
+        }
+        view.backgroundColor = .white
         scrollView.delegate = self
         scrollView.isPagingEnabled = true
         scrollView.scrollsToTop = false
@@ -165,8 +152,7 @@ public final class TopContentPagerViewController: UIViewController, UIGestureRec
         ])
     }
     
-    @objc
-    private func tapTab(_ sender: UITapGestureRecognizer) {
+    @objc private func tapTab(_ sender: UITapGestureRecognizer) {
         guard let tabView = topView.tabView else { return }
         let position = sender.location(in: self.topView.tabView)
         if position.y < tabView.frame.size.height - tabView.options.itemHeight {

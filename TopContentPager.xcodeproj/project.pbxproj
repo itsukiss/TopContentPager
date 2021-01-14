@@ -19,6 +19,7 @@
 		843FD8BB25AEAAF200AD615F /* PagerItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843FD8BA25AEAAF200AD615F /* PagerItemView.xib */; };
 		843FD8C225AEAC4C00AD615F /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD8C125AEAC4C00AD615F /* Storyboard.swift */; };
 		843FD8CE25AEC11A00AD615F /* NSObject+NibLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD8CD25AEC11A00AD615F /* NSObject+NibLoading.swift */; };
+		843FDA0625B0969100AD615F /* CustomTopContentPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FDA0525B0969100AD615F /* CustomTopContentPagerViewController.swift */; };
 		84BB333525A85EEF0056A35F /* TopContentPager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BB332B25A85EEF0056A35F /* TopContentPager.framework */; };
 		84BB333A25A85EEF0056A35F /* TopContentPagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB333925A85EEF0056A35F /* TopContentPagerTests.swift */; };
 		84BB333C25A85EEF0056A35F /* TopContentPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 84BB332E25A85EEF0056A35F /* TopContentPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -83,6 +84,7 @@
 		843FD8BA25AEAAF200AD615F /* PagerItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PagerItemView.xib; sourceTree = "<group>"; };
 		843FD8C125AEAC4C00AD615F /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		843FD8CD25AEC11A00AD615F /* NSObject+NibLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+NibLoading.swift"; sourceTree = "<group>"; };
+		843FDA0525B0969100AD615F /* CustomTopContentPagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTopContentPagerViewController.swift; sourceTree = "<group>"; };
 		84BB332B25A85EEF0056A35F /* TopContentPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TopContentPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BB332E25A85EEF0056A35F /* TopContentPager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopContentPager.h; sourceTree = "<group>"; };
 		84BB332F25A85EEF0056A35F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				84BB33A425A8655A0056A35F /* AppDelegate.swift */,
 				84BB33A625A8655A0056A35F /* SceneDelegate.swift */,
 				84BB33A825A8655A0056A35F /* ViewController.swift */,
+				843FDA0525B0969100AD615F /* CustomTopContentPagerViewController.swift */,
 				843FD88425AEA08200AD615F /* Page1ViewController.swift */,
 				843FD89225AEA09A00AD615F /* Page1ViewController.storyboard */,
 				843FD88B25AEA08E00AD615F /* Page2ViewController.swift */,
@@ -525,6 +528,7 @@
 				843FD8C225AEAC4C00AD615F /* Storyboard.swift in Sources */,
 				84BB33A525A8655A0056A35F /* AppDelegate.swift in Sources */,
 				843FD8AD25AEA21E00AD615F /* TopView.swift in Sources */,
+				843FDA0625B0969100AD615F /* CustomTopContentPagerViewController.swift in Sources */,
 				843FD8CE25AEC11A00AD615F /* NSObject+NibLoading.swift in Sources */,
 				84BB33A725A8655A0056A35F /* SceneDelegate.swift in Sources */,
 			);
