@@ -55,7 +55,7 @@ public final class TopContentPagerViewController: UIViewController, UIGestureRec
     public var selectedIndex: Int = 0 {
         didSet {
             addContentViewToEscapeView()
-            topView.tabView.adjustSelected(page: selectedIndex)
+            topView.tabView?.adjustSelected(page: selectedIndex)
             UIView.animate(withDuration: 0.25, animations: {
                 self.scrollView.setContentOffset(CGPoint(x: self.scrollView.bounds.size.width * CGFloat(self.selectedIndex), y: 0), animated: false)
             }) { _ in
@@ -66,14 +66,14 @@ public final class TopContentPagerViewController: UIViewController, UIGestureRec
         }
     }
     private lazy var setupLayout: Void = {
-        tabBarTitles.map { PagerItem(title: $0) }.forEach { topView.tabView.addItem(item: $0) }
+        tabBarTitles.map { PagerItem(title: $0) }.forEach { topView.tabView?.addItem(item: $0) }
         selectedIndex = 0
-        topView.tabView.adjustSelected(page: selectedIndex)
-        topView.tabView.update(pagerOptions: .init())
+        topView.tabView?.adjustSelected(page: selectedIndex)
+        topView.tabView?.update(pagerOptions: .init())
         topView.isUserInteractionEnabled = true
         let tabBarTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapTab(_:)))
         tabBarTapRecognizer.delegate = self
-        topView.tabView.addGestureRecognizer(tabBarTapRecognizer)
+        topView.tabView?.addGestureRecognizer(tabBarTapRecognizer)
     }()
 
     public var selectedViewController: ContentTableViewController {
@@ -105,6 +105,7 @@ public final class TopContentPagerViewController: UIViewController, UIGestureRec
         scrollView.showsVerticalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.alwaysBounceVertical = false
+        scrollView.isScrollEnabled = false
         view.addSubview(scrollView)
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -166,12 +167,13 @@ public final class TopContentPagerViewController: UIViewController, UIGestureRec
     
     @objc
     private func tapTab(_ sender: UITapGestureRecognizer) {
+        guard let tabView = topView.tabView else { return }
         let position = sender.location(in: self.topView.tabView)
-        if position.y < self.topView.tabView.frame.size.height - self.topView.tabView.options.itemHeight {
+        if position.y < tabView.frame.size.height - tabView.options.itemHeight {
             return
         }
         
-        let index = Int(floor(position.x / (self.topView.tabView.frame.size.width / max(CGFloat(self.topView.tabView.items.count), 1))))
+        let index = Int(floor(position.x / (tabView.frame.size.width / max(CGFloat(tabView.items.count), 1))))
         self.selectedIndex = index
     }
 
