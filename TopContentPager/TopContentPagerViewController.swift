@@ -10,13 +10,13 @@ import UIKit
 
 public protocol TopContentPagerDataSource: class {
     func topContentPagerViewControllerTopContentView(_ viewController: TopContentPagerViewController) -> ContentTopProtocol
-    func topContentPagerViewControllerTabTitles(_ viewController: TopContentPagerViewController) -> [String]
     func topContentPagerViewControllerViewControllers(_ viewController: TopContentPagerViewController) -> [ContentTableBody]
 }
 
 open class TopContentPagerViewController: UIViewController, UIGestureRecognizerDelegate {
     
     public weak var dataSource: TopContentPagerDataSource?
+    public var viewControllers: [ContentTableViewController] = []
     public var selectedViewController: ContentTableViewController {
             viewControllers[selectedIndex]
     }
@@ -37,7 +37,6 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
     public private(set) var tabHeight: CGFloat!
     public private(set) var headerHeight: CGFloat!
 
-    private var viewControllers: [ContentTableViewController] = []
     private var topView: ContentTopProtocol!
     private let scrollView = UIScrollView()
     private let scrollContainerView = UIView()
@@ -58,7 +57,12 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
 
     open override func viewDidLoad() {
         super.viewDidLoad()
-        setupDataSource()
+        view.backgroundColor = .white
+        setupWillLoadDataSource()
+        guard let dataSource = dataSource, !dataSource.topContentPagerViewControllerViewControllers(self).isEmpty else {
+            return
+        }
+        loadDataSource(dataSource: dataSource)
         setup()
         viewControllers.forEach { vc in
             vc.delegate = self
@@ -67,23 +71,28 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
 
     open override func viewDidLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        guard let dataSource = dataSource, !dataSource.topContentPagerViewControllerViewControllers(self).isEmpty else {
+            return
+        }
         _ = setupLayout
     }
     
-    open func setupDataSource() { }
+    open func setupWillLoadDataSource() { }
 
-    private func setup() {
-        topView = dataSource?.topContentPagerViewControllerTopContentView(self)
+    private func loadDataSource(dataSource: TopContentPagerDataSource) {
+        topView = dataSource.topContentPagerViewControllerTopContentView(self)
         topView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: topView.estimateHeight)
         tabHeight = topView.tabViewHeight
         headerHeight = topView.estimateHeight
-        tabBarTitles = dataSource?.topContentPagerViewControllerTabTitles(self) ?? []
-        
-        dataSource?.topContentPagerViewControllerViewControllers(self).forEach { item in
+        let bodyViewControllers = dataSource.topContentPagerViewControllerViewControllers(self)
+        tabBarTitles = bodyViewControllers.map { $0.pageTitle }
+        bodyViewControllers.forEach { item in
             let contentVC = ContentTableViewController.create(with: .init(topView: topView, viewController: item))
             viewControllers.append(contentVC)
         }
-        view.backgroundColor = .white
+    }
+    
+    private func setup() {
         scrollView.delegate = self
         scrollView.isPagingEnabled = true
         scrollView.scrollsToTop = false

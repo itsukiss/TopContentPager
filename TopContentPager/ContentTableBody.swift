@@ -9,6 +9,7 @@
 import UIKit
 
 public protocol ContentTableBody: UIViewController {
+    var pageTitle: String { get }
     var scrollView: UIScrollView! { get }
     var delegate: ContentTableBodyDelegate? { get set }
     @discardableResult func refresh(sender: UIRefreshControl, contentViewController: ContentTableViewController) -> Bool

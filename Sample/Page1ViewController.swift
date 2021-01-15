@@ -9,6 +9,7 @@ import UIKit
 import TopContentPager
 
 final class Page1ViewController: UIViewController, ContentTableBody {
+    var pageTitle: String = "Page1"
     weak var delegate: ContentTableBodyDelegate?
     
     var scrollView: UIScrollView!

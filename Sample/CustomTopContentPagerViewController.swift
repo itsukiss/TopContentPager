@@ -13,8 +13,8 @@ final class CustomTopContentPagerViewController: TopContentPagerViewController {
     private let page1 = Page1ViewController.create()
     private let page2 = Page2ViewController.create()
     
-    override func setupDataSource() {
-        super.setupDataSource()
+    override func setupWillLoadDataSource() {
+        super.setupWillLoadDataSource()
         dataSource = self
     }
     
@@ -26,10 +26,6 @@ final class CustomTopContentPagerViewController: TopContentPagerViewController {
 extension CustomTopContentPagerViewController: TopContentPagerDataSource {
     func topContentPagerViewControllerTopContentView(_ viewController: TopContentPagerViewController) -> ContentTopProtocol {
         topView
-    }
-    
-    func topContentPagerViewControllerTabTitles(_ viewController: TopContentPagerViewController) -> [String] {
-        ["Page1", "Page2"]
     }
     
     func topContentPagerViewControllerViewControllers(_ viewController: TopContentPagerViewController) -> [ContentTableBody] {
