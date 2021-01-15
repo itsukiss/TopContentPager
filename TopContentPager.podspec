@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name           = "TopContentPager"
-  spec.version        = "0.0.3"
+  spec.version        = "0.0.4"
   spec.summary        = "Pager Like Instagram Mypage View"
   spec.homepage       = "https://github.com/itsukiss/TopContentPager"
   spec.license        = { :type => 'MIT', :file => 'LICENSE' }
