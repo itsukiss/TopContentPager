@@ -1,15 +1,14 @@
 //
-//  WishDetailViewController.swift
-//  tapple
+//  TopContentPagerViewController.swift
+//  TopContentPager
 //
-//  Created by 田中 厳貴 on 2020/11/30.
-//  Copyright © 2020 MatchingAgent, Inc. All rights reserved.
+//  Created by 田中厳貴 on 2021/01/08.
 //
 
 import UIKit
 
 public protocol TopContentPagerDataSource: class {
-    func topContentPagerViewControllerTopContentView(_ viewController: TopContentPagerViewController) -> ContentTopProtocol
+    func topContentPagerViewControllerTopContentView(_ viewController: TopContentPagerViewController) -> TopContent
     func topContentPagerViewControllerViewControllers(_ viewController: TopContentPagerViewController) -> [ContentTableBody]
 }
 
@@ -37,7 +36,7 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
     public private(set) var tabHeight: CGFloat!
     public private(set) var headerHeight: CGFloat!
 
-    private var topView: ContentTopProtocol!
+    private var topView: TopContent!
     private let scrollView = UIScrollView()
     private let scrollContainerView = UIView()
     private let escapeView = UIView()

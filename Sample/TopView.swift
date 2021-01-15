@@ -8,7 +8,7 @@
 import UIKit
 import TopContentPager
 
-class TopView: UIView, ContentTopProtocol {
+class TopView: UIView, TopContent {
     var estimateHeight: CGFloat = 300
     var tabView: PagerItemsView? = PagerItemsView()
     

@@ -1,9 +1,8 @@
 //
 //  WishDetailInformationViewController.swift
-//  tapple
+//  TopContentPager
 //
-//  Created by 田中 厳貴 on 2020/12/10.
-//  Copyright © 2020 MatchingAgent, Inc. All rights reserved.
+//  Created by 田中厳貴 on 2021/01/08.
 //
 
 import UIKit
@@ -32,11 +31,11 @@ public final class ContentTableViewController: UIViewController {
             self?.tableView.reloadData()
         }
     }()
-    public private(set) var topView: ContentTopProtocol!
+    public private(set) var topView: TopContent!
     private var bodyContentHeight: CGFloat = 0
 
     public struct Input {
-        let topView: ContentTopProtocol
+        let topView: TopContent
         let viewController: ContentTableBody
     }
 

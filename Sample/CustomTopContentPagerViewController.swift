@@ -24,7 +24,7 @@ final class CustomTopContentPagerViewController: TopContentPagerViewController {
 }
 
 extension CustomTopContentPagerViewController: TopContentPagerDataSource {
-    func topContentPagerViewControllerTopContentView(_ viewController: TopContentPagerViewController) -> ContentTopProtocol {
+    func topContentPagerViewControllerTopContentView(_ viewController: TopContentPagerViewController) -> TopContent {
         topView
     }
     
