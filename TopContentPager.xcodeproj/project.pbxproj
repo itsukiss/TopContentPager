@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		843FD85625AE8EBF00AD615F /* NSObject+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD85525AE8EBF00AD615F /* NSObject+Name.swift */; };
 		843FD85D25AE8EEF00AD615F /* UITableView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD85C25AE8EEF00AD615F /* UITableView+Register.swift */; };
-		843FD87325AE9F4900AD615F /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD87225AE9F4900AD615F /* Storyboard.swift */; };
 		843FD88525AEA08200AD615F /* Page1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD88425AEA08200AD615F /* Page1ViewController.swift */; };
 		843FD88C25AEA08E00AD615F /* Page2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD88B25AEA08E00AD615F /* Page2ViewController.swift */; };
 		843FD89325AEA09A00AD615F /* Page1ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843FD89225AEA09A00AD615F /* Page1ViewController.storyboard */; };
@@ -39,7 +38,6 @@
 		84BB33D925A86B450056A35F /* PagerItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB33D825A86B450056A35F /* PagerItemsView.swift */; };
 		84BB33E525A86B870056A35F /* PagerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB33E425A86B870056A35F /* PagerOptions.swift */; };
 		84BB33F125A872ED0056A35F /* PagerItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB33F025A872ED0056A35F /* PagerItemView.swift */; };
-		84BB33F825A873FE0056A35F /* NSObject+NibLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB33F725A873FE0056A35F /* NSObject+NibLoading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +67,6 @@
 /* Begin PBXFileReference section */
 		843FD85525AE8EBF00AD615F /* NSObject+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Name.swift"; sourceTree = "<group>"; };
 		843FD85C25AE8EEF00AD615F /* UITableView+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Register.swift"; sourceTree = "<group>"; };
-		843FD87225AE9F4900AD615F /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		843FD88425AEA08200AD615F /* Page1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1ViewController.swift; sourceTree = "<group>"; };
 		843FD88B25AEA08E00AD615F /* Page2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page2ViewController.swift; sourceTree = "<group>"; };
 		843FD89225AEA09A00AD615F /* Page1ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Page1ViewController.storyboard; sourceTree = "<group>"; };
@@ -108,7 +105,6 @@
 		84BB33D825A86B450056A35F /* PagerItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerItemsView.swift; sourceTree = "<group>"; };
 		84BB33E425A86B870056A35F /* PagerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerOptions.swift; sourceTree = "<group>"; };
 		84BB33F025A872ED0056A35F /* PagerItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerItemView.swift; sourceTree = "<group>"; };
-		84BB33F725A873FE0056A35F /* NSObject+NibLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+NibLoading.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,10 +150,8 @@
 		843FD87925AE9F6300AD615F /* Utilitie */ = {
 			isa = PBXGroup;
 			children = (
-				84BB33F725A873FE0056A35F /* NSObject+NibLoading.swift */,
 				843FD85525AE8EBF00AD615F /* NSObject+Name.swift */,
 				843FD85C25AE8EEF00AD615F /* UITableView+Register.swift */,
-				843FD87225AE9F4900AD615F /* Storyboard.swift */,
 			);
 			path = Utilitie;
 			sourceTree = "<group>";
@@ -481,9 +475,7 @@
 				84BB33F125A872ED0056A35F /* PagerItemView.swift in Sources */,
 				843FD85D25AE8EEF00AD615F /* UITableView+Register.swift in Sources */,
 				84BB338E25A85FBC0056A35F /* ContentBodyCell.swift in Sources */,
-				84BB33F825A873FE0056A35F /* NSObject+NibLoading.swift in Sources */,
 				84BB33E525A86B870056A35F /* PagerOptions.swift in Sources */,
-				843FD87325AE9F4900AD615F /* Storyboard.swift in Sources */,
 				84BB33D925A86B450056A35F /* PagerItemsView.swift in Sources */,
 				84BB339925A85FBC0056A35F /* TopContentPagerViewController.swift in Sources */,
 				84BB339025A85FBC0056A35F /* ContentTopCell.swift in Sources */,
