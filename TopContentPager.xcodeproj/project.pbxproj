@@ -16,22 +16,17 @@
 		843FD8A625AEA0B600AD615F /* Page2ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843FD8A525AEA0B600AD615F /* Page2ViewController.storyboard */; };
 		843FD8AD25AEA21E00AD615F /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD8AC25AEA21E00AD615F /* TopView.swift */; };
 		843FD8B425AEA22400AD615F /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843FD8B325AEA22400AD615F /* TopView.xib */; };
-		843FD8BB25AEAAF200AD615F /* PagerItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843FD8BA25AEAAF200AD615F /* PagerItemView.xib */; };
 		843FD8C225AEAC4C00AD615F /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD8C125AEAC4C00AD615F /* Storyboard.swift */; };
 		843FD8CE25AEC11A00AD615F /* NSObject+NibLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD8CD25AEC11A00AD615F /* NSObject+NibLoading.swift */; };
 		843FDA0625B0969100AD615F /* CustomTopContentPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FDA0525B0969100AD615F /* CustomTopContentPagerViewController.swift */; };
 		84BB333525A85EEF0056A35F /* TopContentPager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BB332B25A85EEF0056A35F /* TopContentPager.framework */; };
 		84BB333A25A85EEF0056A35F /* TopContentPagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB333925A85EEF0056A35F /* TopContentPagerTests.swift */; };
 		84BB333C25A85EEF0056A35F /* TopContentPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 84BB332E25A85EEF0056A35F /* TopContentPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		84BB338D25A85FBC0056A35F /* ContentTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BB337C25A85FBC0056A35F /* ContentTopCell.xib */; };
 		84BB338E25A85FBC0056A35F /* ContentBodyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB337D25A85FBC0056A35F /* ContentBodyCell.swift */; };
-		84BB338F25A85FBC0056A35F /* ContentBodyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BB337E25A85FBC0056A35F /* ContentBodyCell.xib */; };
 		84BB339025A85FBC0056A35F /* ContentTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB337F25A85FBC0056A35F /* ContentTopCell.swift */; };
-		84BB339125A85FBC0056A35F /* TopContentPagerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BB338025A85FBC0056A35F /* TopContentPagerViewController.storyboard */; };
 		84BB339525A85FBC0056A35F /* ContentTableBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB338525A85FBC0056A35F /* ContentTableBody.swift */; };
 		84BB339625A85FBC0056A35F /* TopContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB338625A85FBC0056A35F /* TopContent.swift */; };
 		84BB339725A85FBC0056A35F /* ContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB338725A85FBC0056A35F /* ContentTableViewController.swift */; };
-		84BB339825A85FBC0056A35F /* ContentTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BB338825A85FBC0056A35F /* ContentTableViewController.storyboard */; };
 		84BB339925A85FBC0056A35F /* TopContentPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB338925A85FBC0056A35F /* TopContentPagerViewController.swift */; };
 		84BB33A525A8655A0056A35F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB33A425A8655A0056A35F /* AppDelegate.swift */; };
 		84BB33A725A8655A0056A35F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB33A625A8655A0056A35F /* SceneDelegate.swift */; };
@@ -81,7 +76,6 @@
 		843FD8A525AEA0B600AD615F /* Page2ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Page2ViewController.storyboard; sourceTree = "<group>"; };
 		843FD8AC25AEA21E00AD615F /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		843FD8B325AEA22400AD615F /* TopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
-		843FD8BA25AEAAF200AD615F /* PagerItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PagerItemView.xib; sourceTree = "<group>"; };
 		843FD8C125AEAC4C00AD615F /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		843FD8CD25AEC11A00AD615F /* NSObject+NibLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+NibLoading.swift"; sourceTree = "<group>"; };
 		843FDA0525B0969100AD615F /* CustomTopContentPagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTopContentPagerViewController.swift; sourceTree = "<group>"; };
@@ -91,15 +85,11 @@
 		84BB333425A85EEF0056A35F /* TopContentPagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TopContentPagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BB333925A85EEF0056A35F /* TopContentPagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopContentPagerTests.swift; sourceTree = "<group>"; };
 		84BB333B25A85EEF0056A35F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84BB337C25A85FBC0056A35F /* ContentTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentTopCell.xib; sourceTree = "<group>"; };
 		84BB337D25A85FBC0056A35F /* ContentBodyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBodyCell.swift; sourceTree = "<group>"; };
-		84BB337E25A85FBC0056A35F /* ContentBodyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentBodyCell.xib; sourceTree = "<group>"; };
 		84BB337F25A85FBC0056A35F /* ContentTopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTopCell.swift; sourceTree = "<group>"; };
-		84BB338025A85FBC0056A35F /* TopContentPagerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TopContentPagerViewController.storyboard; sourceTree = "<group>"; };
 		84BB338525A85FBC0056A35F /* ContentTableBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTableBody.swift; sourceTree = "<group>"; };
 		84BB338625A85FBC0056A35F /* TopContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopContent.swift; sourceTree = "<group>"; };
 		84BB338725A85FBC0056A35F /* ContentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTableViewController.swift; sourceTree = "<group>"; };
-		84BB338825A85FBC0056A35F /* ContentTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ContentTableViewController.storyboard; sourceTree = "<group>"; };
 		84BB338925A85FBC0056A35F /* TopContentPagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopContentPagerViewController.swift; sourceTree = "<group>"; };
 		84BB33A225A8655A0056A35F /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BB33A425A8655A0056A35F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -203,10 +193,8 @@
 				84BB33D725A86B360056A35F /* View */,
 				84BB337B25A85FBC0056A35F /* Cell */,
 				84BB338525A85FBC0056A35F /* ContentTableBody.swift */,
-				84BB338825A85FBC0056A35F /* ContentTableViewController.storyboard */,
 				84BB338725A85FBC0056A35F /* ContentTableViewController.swift */,
 				84BB338625A85FBC0056A35F /* TopContent.swift */,
-				84BB338025A85FBC0056A35F /* TopContentPagerViewController.storyboard */,
 				84BB338925A85FBC0056A35F /* TopContentPagerViewController.swift */,
 				84BB332E25A85EEF0056A35F /* TopContentPager.h */,
 				84BB332F25A85EEF0056A35F /* Info.plist */,
@@ -226,9 +214,7 @@
 		84BB337B25A85FBC0056A35F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				84BB337C25A85FBC0056A35F /* ContentTopCell.xib */,
 				84BB337D25A85FBC0056A35F /* ContentBodyCell.swift */,
-				84BB337E25A85FBC0056A35F /* ContentBodyCell.xib */,
 				84BB337F25A85FBC0056A35F /* ContentTopCell.swift */,
 			);
 			path = Cell;
@@ -280,7 +266,6 @@
 			children = (
 				84BB33D825A86B450056A35F /* PagerItemsView.swift */,
 				84BB33F025A872ED0056A35F /* PagerItemView.swift */,
-				843FD8BA25AEAAF200AD615F /* PagerItemView.xib */,
 				84BB33E425A86B870056A35F /* PagerOptions.swift */,
 			);
 			path = View;
@@ -445,11 +430,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84BB339125A85FBC0056A35F /* TopContentPagerViewController.storyboard in Resources */,
-				843FD8BB25AEAAF200AD615F /* PagerItemView.xib in Resources */,
-				84BB338D25A85FBC0056A35F /* ContentTopCell.xib in Resources */,
-				84BB339825A85FBC0056A35F /* ContentTableViewController.storyboard in Resources */,
-				84BB338F25A85FBC0056A35F /* ContentBodyCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

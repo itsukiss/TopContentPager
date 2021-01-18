@@ -76,9 +76,7 @@ final public class PagerItemsView: UIView {
 
     func addItem(item: PagerItem) {
         self.items.append(item)
-        let itemView = PagerItemView.instantiate()
-        itemView.frame.size.height = self.bounds.height
-        itemView.frame.size.width = self.indicatorMinWidth
+        let itemView = PagerItemView(frame: CGRect(x: 0, y: 0, width: self.indicatorMinWidth, height: self.bounds.height))
         itemView.configure(with: item)
         self.itemViews.append(itemView)
         self.addSubview(itemView)

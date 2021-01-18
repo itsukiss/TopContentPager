@@ -207,15 +207,14 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
     private func tableViewsScroll() {
         let viewControllers = self.viewControllers.filter({ !($0 == selectedViewController) })
         let contentHeight = topView.frame.height - tabHeight
-        viewControllers.forEach {
-            guard let tableView = $0.tableView, let selectedTableView = selectedViewController.tableView else { return }
+        viewControllers.forEach { vc in
             var contentOffset: CGPoint
-            if selectedTableView.contentOffset.y >= contentHeight {
-                contentOffset = tableView.contentOffset.y >= contentHeight ? tableView.contentOffset : CGPoint(x: 0, y: contentHeight)
+            if selectedViewController.tableView.contentOffset.y >= contentHeight {
+                contentOffset = vc.tableView.contentOffset.y >= contentHeight ? vc.tableView.contentOffset : CGPoint(x: 0, y: contentHeight)
             } else {
-                contentOffset = selectedTableView.contentOffset
+                contentOffset = selectedViewController.tableView.contentOffset
             }
-            tableView.setContentOffset(contentOffset, animated: false)
+            vc.tableView.setContentOffset(contentOffset, animated: false)
         }
     }
 }
@@ -254,8 +253,8 @@ extension TopContentPagerViewController: ContentTableViewDelegate {
     }
     
     public func didScroll(viewController: ContentTableViewController) {
-        guard viewController == self.selectedViewController, let selectedTableView = viewController.tableView else { return }
-        if selectedTableView.contentOffset.y > self.topView.frame.height - self.tabHeight {
+        guard viewController == self.selectedViewController else { return }
+        if selectedViewController.tableView.contentOffset.y > self.topView.frame.height - self.tabHeight {
             self.addContentViewToEscapeView()
         } else {
             self.addContentViewToCell()

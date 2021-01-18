@@ -16,7 +16,7 @@ public protocol ContentTableViewDelegate: class {
 
 public final class ContentTableViewController: UIViewController {
 
-    @IBOutlet public weak var tableView: ContentInnerTableView!
+    public var tableView = ContentInnerTableView()
  
     private var observation: NSKeyValueObservation?
     private var refreshControl = UIRefreshControl()
@@ -40,7 +40,7 @@ public final class ContentTableViewController: UIViewController {
     }
 
     public static func create(with input: Input) -> Self {
-        let vc = Storyboard.instantiate(self)
+        let vc = Self.init()
         vc.viewController = input.viewController
         vc.topView = input.topView
         return vc
@@ -48,6 +48,7 @@ public final class ContentTableViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
         setup()
     }
 
@@ -55,10 +56,21 @@ public final class ContentTableViewController: UIViewController {
         super.viewDidAppear(animated)
         _ = setupContentHeight
     }
+    
+    private func setupView() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
 
     private func setup() {
-        tableView.registerNib(classType: ContentTopCell.self)
-        tableView.registerNib(classType: ContentBodyCell.self)
+        tableView.registerClass(classType: ContentTopCell.self)
+        tableView.registerClass(classType: ContentBodyCell.self)
         tableView.separatorColor = .clear
         tableView.dataSource = self
         tableView.delegate = self
