@@ -21,11 +21,13 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
     }
     public var selectedIndex: Int = 0 {
         didSet {
+            contentOffsetX = scrollView.contentOffset.x
             addContentViewToEscapeView()
             topView.tabView?.adjustSelected(page: selectedIndex)
             UIView.animate(withDuration: 0.25, animations: {
                 self.scrollView.setContentOffset(CGPoint(x: self.scrollView.bounds.size.width * CGFloat(self.selectedIndex), y: 0), animated: false)
             }) { _ in
+                self.contentOffsetX = self.scrollView.contentOffset.x
                 if let constant = self.escapeViewTopConstraint?.constant, -(self.topView.frame.height - self.tabHeight) < constant {
                     self.addContentViewToCell()
                 }
@@ -43,6 +45,7 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
     private var escapeViewTopConstraint: NSLayoutConstraint?
     private var containerViews: [UIView] = []
     private var tabBarTitles: [String] = []
+    private var contentOffsetX: CGFloat = 0
     private lazy var setupLayout: Void = {
         tabBarTitles.map { PagerItem(title: $0) }.forEach { topView.tabView?.addItem(item: $0) }
         selectedIndex = 0
@@ -221,12 +224,20 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
 
 extension TopContentPagerViewController: UIScrollViewDelegate {
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        contentOffsetX = scrollView.contentOffset.x
         if let constant = escapeViewTopConstraint?.constant, !decelerate && -(topView.frame.height - tabHeight) < constant {
             addContentViewToCell()
         }
     }
+    
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x != contentOffsetX {
+            scrollView.contentOffset.y = 0
+        }
+    }
 
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        contentOffsetX = scrollView.contentOffset.x
         addContentViewToEscapeView()
     }
 
