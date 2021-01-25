@@ -81,6 +81,15 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
     
     open func setupWillLoadDataSource() { }
 
+    public func updateHeader() {
+        headerHeight = topView.estimateHeight
+        addContentViewToEscapeView()
+        viewControllers.forEach { $0.tableView.reloadData() }
+        tabHeight = topView.tabViewHeight
+        topView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: headerHeight)
+        addContentViewToCell()
+    }
+    
     private func loadDataSource(dataSource: TopContentPagerDataSource) {
         topView = dataSource.topContentPagerViewControllerTopContentView(self)
         topView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: topView.estimateHeight)
@@ -181,12 +190,6 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
         let cells = selectedViewController.tableView.visibleCells.filter { $0.isKind(of: ContentTopCell.self) }
         if let cell = cells.first as? ContentTopCell {
             cell.addSubview(topView)
-            NSLayoutConstraint.activate([
-                topView.topAnchor.constraint(equalTo: cell.topAnchor),
-                topView.bottomAnchor.constraint(equalTo: cell.bottomAnchor),
-                topView.trailingAnchor.constraint(equalTo: cell.trailingAnchor),
-                topView.leadingAnchor.constraint(equalTo: cell.leadingAnchor)
-            ])
         }
     }
 
@@ -194,13 +197,6 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
         if topView.superview == escapeView { return }
         escapeView.isUserInteractionEnabled = true
         escapeView.addSubview(topView)
-
-        NSLayoutConstraint.activate([
-            topView.topAnchor.constraint(equalTo: escapeView.topAnchor),
-            topView.bottomAnchor.constraint(equalTo: escapeView.bottomAnchor),
-            topView.trailingAnchor.constraint(equalTo: escapeView.trailingAnchor),
-            topView.leadingAnchor.constraint(equalTo: escapeView.leadingAnchor)
-        ])
 
         let topConstant = max(0, min(topView.frame.height - tabHeight, selectedViewController.tableView.contentOffset.y))
         escapeViewTopConstraint?.constant = -topConstant

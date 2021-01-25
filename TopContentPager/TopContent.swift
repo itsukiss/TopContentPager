@@ -9,12 +9,16 @@ import UIKit
 
 public protocol TopContent: UIView {
     var tabViewHeight: CGFloat { get }
-    var estimateHeight: CGFloat { get set }
+    var estimateHeight: CGFloat { get }
     var tabView: PagerItemsView? { get set }
 }
 
 public extension TopContent {
     var tabViewHeight: CGFloat {
         tabView?.options.itemHeight ?? 0
+    }
+    
+    var estimateHeight: CGFloat {
+        0
     }
 }
