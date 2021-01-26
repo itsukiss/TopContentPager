@@ -19,6 +19,6 @@ public extension TopContent {
     }
     
     var estimateHeight: CGFloat {
-        0
+        self.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize, withHorizontalFittingPriority: .fittingSizeLevel, verticalFittingPriority: .defaultLow).height
     }
 }

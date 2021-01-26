@@ -12,6 +12,8 @@ public protocol TopContentPagerDataSource: class {
     func topContentPagerViewControllerViewControllers(_ viewController: TopContentPagerViewController) -> [ContentTableBody]
 }
 
+class EscapeView: UIView { }
+
 open class TopContentPagerViewController: UIViewController, UIGestureRecognizerDelegate {
     
     public weak var dataSource: TopContentPagerDataSource?
@@ -41,8 +43,9 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
     private var topView: TopContent!
     private let scrollView = UIScrollView()
     private let scrollContainerView = UIView()
-    private let escapeView = UIView()
+    private let escapeView = EscapeView()
     private var escapeViewTopConstraint: NSLayoutConstraint?
+    private var escapeViewHeightConstraint: NSLayoutConstraint?
     private var containerViews: [UIView] = []
     private var tabBarTitles: [String] = []
     private var contentOffsetX: CGFloat = 0
@@ -82,10 +85,12 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
     open func setupWillLoadDataSource() { }
 
     public func updateHeader() {
-        headerHeight = topView.estimateHeight
+        escapeViewHeightConstraint?.constant = topView.estimateHeight
+        escapeView.layoutIfNeeded()
         addContentViewToEscapeView()
         viewControllers.forEach { $0.tableView.reloadData() }
         tabHeight = topView.tabViewHeight
+        headerHeight = topView.estimateHeight
         topView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: headerHeight)
         addContentViewToCell()
     }
@@ -164,11 +169,12 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
         escapeView.backgroundColor = .clear
         view.addSubview(escapeView)
         escapeViewTopConstraint = escapeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        escapeViewHeightConstraint = escapeView.heightAnchor.constraint(equalToConstant: headerHeight)
         NSLayoutConstraint.activate([
             escapeViewTopConstraint!,
             escapeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             escapeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            escapeView.heightAnchor.constraint(equalToConstant: headerHeight)
+            escapeViewHeightConstraint!
         ])
     }
     
