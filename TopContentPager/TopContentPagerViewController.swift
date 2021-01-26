@@ -93,6 +93,8 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
         headerHeight = topView.estimateHeight
         topView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: headerHeight)
         addContentViewToCell()
+        escapeViewHeightConstraint?.constant = topView.estimateHeight
+        escapeView.layoutIfNeeded()
     }
     
     private func loadDataSource(dataSource: TopContentPagerDataSource) {

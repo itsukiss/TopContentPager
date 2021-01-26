@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8435A4BF25BFFA1C00EEDA77 /* TopContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435A4BE25BFFA1C00EEDA77 /* TopContentView.swift */; };
 		843FD85625AE8EBF00AD615F /* NSObject+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD85525AE8EBF00AD615F /* NSObject+Name.swift */; };
 		843FD85D25AE8EEF00AD615F /* UITableView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD85C25AE8EEF00AD615F /* UITableView+Register.swift */; };
 		843FD88525AEA08200AD615F /* Page1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD88425AEA08200AD615F /* Page1ViewController.swift */; };
@@ -65,6 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8435A4BE25BFFA1C00EEDA77 /* TopContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopContentView.swift; sourceTree = "<group>"; };
 		843FD85525AE8EBF00AD615F /* NSObject+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Name.swift"; sourceTree = "<group>"; };
 		843FD85C25AE8EEF00AD615F /* UITableView+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Register.swift"; sourceTree = "<group>"; };
 		843FD88425AEA08200AD615F /* Page1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1ViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				84BB337B25A85FBC0056A35F /* Cell */,
 				84BB338525A85FBC0056A35F /* ContentTableBody.swift */,
 				84BB338725A85FBC0056A35F /* ContentTableViewController.swift */,
+				8435A4BE25BFFA1C00EEDA77 /* TopContentView.swift */,
 				84BB338625A85FBC0056A35F /* TopContent.swift */,
 				84BB338925A85FBC0056A35F /* TopContentPagerViewController.swift */,
 				84BB332E25A85EEF0056A35F /* TopContentPager.h */,
@@ -468,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8435A4BF25BFFA1C00EEDA77 /* TopContentView.swift in Sources */,
 				84BB339525A85FBC0056A35F /* ContentTableBody.swift in Sources */,
 				84BB339625A85FBC0056A35F /* TopContent.swift in Sources */,
 				843FD85625AE8EBF00AD615F /* NSObject+Name.swift in Sources */,
