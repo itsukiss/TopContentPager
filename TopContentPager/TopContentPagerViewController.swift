@@ -39,6 +39,7 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
     
     public private(set) var tabHeight: CGFloat!
     public private(set) var headerHeight: CGFloat!
+    public private(set) var safeAreaBar = UIView()
 
     private var topView: TopContentView!
     private let scrollView = UIScrollView()
@@ -178,6 +179,19 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
             escapeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             escapeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             escapeViewHeightConstraint!
+        ])
+        
+        safeAreaBar.translatesAutoresizingMaskIntoConstraints = false
+        safeAreaBar.isUserInteractionEnabled = false
+        safeAreaBar.backgroundColor = .white
+        safeAreaBar.clipsToBounds = true
+        view.addSubview(safeAreaBar)
+        
+        NSLayoutConstraint.activate([
+            safeAreaBar.topAnchor.constraint(equalTo: view.topAnchor),
+            safeAreaBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            safeAreaBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            safeAreaBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         ])
     }
     
