@@ -8,17 +8,21 @@
 import UIKit
 import TopContentPager
 
-class TopView: UIView, TopContent {
-    var estimateHeight: CGFloat = 300
-    var tabView: PagerItemsView? = PagerItemsView()
+class TopView: TopContentView {
+    @IBOutlet weak var topViewLabel: UILabel! {
+        didSet {
+            topViewLabel.numberOfLines = 0
+        }
+    }
+    @IBOutlet weak var bottomSpace: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        if let tabView = tabView {
-            tabView.update(pagerOptions: .init(itemHeight: tabViewHeight))
-            tabView.autoresizingMask = .flexibleWidth
-            tabView.frame = CGRect(x: 0, y: self.frame.height - tabViewHeight, width: self.frame.width, height: tabViewHeight)
-            self.addSubview(tabView)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.topViewLabel.text = "ajkldajflkfjajfdklajdfjklsjfkajdjflafdjkfjlajfdkljalfjdksafjdlkafjkafjladfjdlakfkjf"
+            self.bottomSpace.constant = 300
+            self.updateLayout()
         }
+        
     }
 }

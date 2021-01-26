@@ -14,8 +14,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TopView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFc-hU-Wkc">
-                    <rect key="frame" x="174.5" y="139.5" width="65" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TopView" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFc-hU-Wkc">
+                    <rect key="frame" x="16" y="139.5" width="382" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -24,10 +24,17 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="qFc-hU-Wkc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="W3v-9m-PAc"/>
+                <constraint firstAttribute="bottom" secondItem="qFc-hU-Wkc" secondAttribute="bottom" constant="139.5" id="FDT-pv-KDn"/>
+                <constraint firstItem="qFc-hU-Wkc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="JwG-Cy-lev"/>
                 <constraint firstItem="qFc-hU-Wkc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="WlC-lF-o2J"/>
+                <constraint firstItem="qFc-hU-Wkc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="139.5" id="eo4-jk-Xew"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qFc-hU-Wkc" secondAttribute="trailing" constant="16" id="uhu-kM-DAM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bottomSpace" destination="FDT-pv-KDn" id="rcd-vx-0sA"/>
+                <outlet property="topViewLabel" destination="qFc-hU-Wkc" id="3oU-hj-ygY"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="-70.982142857142847"/>
         </view>
     </objects>

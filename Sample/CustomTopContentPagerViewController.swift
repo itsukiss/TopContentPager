@@ -24,12 +24,11 @@ final class CustomTopContentPagerViewController: TopContentPagerViewController {
 }
 
 extension CustomTopContentPagerViewController: TopContentPagerDataSource {
-    func topContentPagerViewControllerTopContentView(_ viewController: TopContentPagerViewController) -> TopContent {
+    func topContentPagerViewControllerTopContentView(_ viewController: TopContentPagerViewController) -> TopContentView {
         topView
     }
     
     func topContentPagerViewControllerViewControllers(_ viewController: TopContentPagerViewController) -> [ContentTableBody] {
         [page1, page2]
     }
-    
 }
