@@ -63,6 +63,7 @@ final public class PagerItemsView: UIView {
         self.frame.size.height = options.itemHeight
         self.itemViewHeight = options.itemHeight
         self.indicatorHeight = options.indicatorHeight
+        self.lineHeight = options.indicatorHeight
         self.backgroundColor = options.backgroundColor
         self.indicatorSideSpace = options.indicatorSideSpace
         self.lineView.backgroundColor = options.lineColor

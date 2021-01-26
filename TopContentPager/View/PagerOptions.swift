@@ -8,15 +8,15 @@
 import UIKit
 
 final public class PagerOptions {
-    var itemHeight: CGFloat = 44
-    var indicatorHeight: CGFloat = 2
-    var indicatorColor: UIColor = UIColor.black
-    var activeBackgroundColor: UIColor = UIColor.clear
-    var backgroundColor: UIColor = UIColor.white
-    var lineColor: UIColor = UIColor.white
-    var deactiveLabelColor: UIColor = UIColor.gray
-    var activeLabelColor: UIColor = UIColor.black
-    var indicatorSideSpace: CGFloat = 0
+    public var itemHeight: CGFloat = 44
+    public var indicatorHeight: CGFloat = 2
+    public var indicatorColor: UIColor = UIColor.black
+    public var activeBackgroundColor: UIColor = UIColor.clear
+    public var backgroundColor: UIColor = UIColor.white
+    public var lineColor: UIColor = UIColor.white
+    public var deactiveLabelColor: UIColor = UIColor.gray
+    public var activeLabelColor: UIColor = UIColor.black
+    public var indicatorSideSpace: CGFloat = 0
 
     init() {
 
@@ -44,15 +44,15 @@ final public class PagerOptions {
 }
 
 final public class UpdatePagerOptions {
-    var itemHeight: CGFloat?
-    var indicatorHeight: CGFloat?
-    var indicatorColor: UIColor?
-    var activeBackgroundColor: UIColor?
-    var backgroundColor: UIColor?
-    var lineColor: UIColor?
-    var deactiveLabelColor: UIColor?
-    var activeLabelColor: UIColor?
-    var indicatorSideSpace: CGFloat?
+    public var itemHeight: CGFloat?
+    public var indicatorHeight: CGFloat?
+    public var indicatorColor: UIColor?
+    public var activeBackgroundColor: UIColor?
+    public var backgroundColor: UIColor?
+    public var lineColor: UIColor?
+    public var deactiveLabelColor: UIColor?
+    public var activeLabelColor: UIColor?
+    public var indicatorSideSpace: CGFloat?
     
     public init() { }
     

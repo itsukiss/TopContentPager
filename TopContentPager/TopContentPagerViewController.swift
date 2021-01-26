@@ -8,7 +8,7 @@
 import UIKit
 
 public protocol TopContentPagerDataSource: class {
-    func topContentPagerViewControllerTopContentView(_ viewController: TopContentPagerViewController) -> TopContent
+    func topContentPagerViewControllerTopContentView(_ viewController: TopContentPagerViewController) -> TopContentView
     func topContentPagerViewControllerViewControllers(_ viewController: TopContentPagerViewController) -> [ContentTableBody]
 }
 
@@ -40,7 +40,7 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
     public private(set) var tabHeight: CGFloat!
     public private(set) var headerHeight: CGFloat!
 
-    private var topView: TopContent!
+    private var topView: TopContentView!
     private let scrollView = UIScrollView()
     private let scrollContainerView = UIView()
     private let escapeView = EscapeView()
@@ -97,6 +97,7 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
     
     private func loadDataSource(dataSource: TopContentPagerDataSource) {
         topView = dataSource.topContentPagerViewControllerTopContentView(self)
+        topView.delegate = self
         topView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: topView.estimateHeight)
         tabHeight = topView.tabViewHeight
         headerHeight = topView.estimateHeight
@@ -272,5 +273,11 @@ extension TopContentPagerViewController: ContentTableViewDelegate {
         } else {
             self.addContentViewToCell()
         }
+    }
+}
+
+extension TopContentPagerViewController: TopContentViewDelegate {
+    func needsReload() {
+        updateHeader()
     }
 }

@@ -31,11 +31,11 @@ public final class ContentTableViewController: UIViewController {
             self?.tableView.reloadData()
         }
     }()
-    public private(set) var topView: TopContent!
+    public private(set) var topView: TopContentView!
     private var bodyContentHeight: CGFloat = 0
 
     public struct Input {
-        let topView: TopContent
+        let topView: TopContentView
         let viewController: ContentTableBody
     }
 
