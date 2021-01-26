@@ -18,11 +18,11 @@ class TopView: TopContentView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.topViewLabel.text = "ajkldajflkfjajfdklajdfjklsjfkajdjflafdjkfjlajfdkljalfjdksafjdlkafjkafjladfjdlakfkjf"
-            self.bottomSpace.constant = 300
-            self.updateLayout()
-        }
-        
+        prepare()
+    }
+    
+    func prepare() {
+        topViewLabel.text = "山路を登りながら、こう考えた。智に働けば角が立つ。情に棹させば流される。意地を通せば窮屈だ。とかくに人の世は住みにくい。住みにくさが高じると、安い所へ引き越したくなる。"
+        updateLayout()
     }
 }

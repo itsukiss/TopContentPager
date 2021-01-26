@@ -8,7 +8,6 @@
 import UIKit
 
 public protocol ContentTableViewDelegate: class {
-    func moveIndex(index: Int)
     func didEndDragging(viewController: ContentTableViewController, willDecelerate decelerate: Bool)
     func didEndDecelerationg(viewController: ContentTableViewController)
     func didScroll(viewController: ContentTableViewController)
@@ -51,11 +50,6 @@ public final class ContentTableViewController: UIViewController {
         setupView()
         setup()
     }
-
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        _ = setupContentHeight
-    }
     
     private func setupView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,8 +70,6 @@ public final class ContentTableViewController: UIViewController {
         tableView.delegate = self
         tableView.refreshControl = viewController.refresh(sender: refreshControl, contentViewController: self) ? refreshControl : nil
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
-        
-        viewController.delegate = self
         
         addChild(viewController)
         viewController.didMove(toParent: self)
@@ -123,6 +115,12 @@ extension ContentTableViewController: UITableViewDataSource {
 }
 
 extension ContentTableViewController: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if cell is ContentBodyCell {
+            _ = setupContentHeight
+        }
+    }
+    
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return topView.estimateHeight
@@ -138,13 +136,6 @@ extension ContentTableViewController: UITableViewDelegate {
         }
     }
 }
-
-extension ContentTableViewController: ContentTableBodyDelegate {
-    public func selectedIndex(index: Int) {
-        delegate?.moveIndex(index: index)
-    }
-}
-
 
 public class ContentInnerTableView: UITableView {
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {

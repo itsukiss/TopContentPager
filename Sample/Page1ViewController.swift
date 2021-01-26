@@ -10,7 +10,6 @@ import TopContentPager
 
 final class Page1ViewController: UIViewController, ContentTableBody {
     var pageTitle: String = "Page1"
-    weak var delegate: ContentTableBodyDelegate?
     
     var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView! {
@@ -26,7 +25,6 @@ final class Page1ViewController: UIViewController, ContentTableBody {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-        tableView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,11 +42,5 @@ extension Page1ViewController: UITableViewDataSource {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "p1Cell")
         cell.textLabel?.text = "item\(indexPath.row)"
         return cell
-    }
-}
-
-extension Page1ViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            delegate?.selectedIndex(index: 1)
     }
 }
