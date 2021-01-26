@@ -266,7 +266,8 @@ extension TopContentPagerViewController: UIScrollViewDelegate {
     }
 }
 
-extension TopContentPagerViewController: ContentTableViewDelegate {   
+extension TopContentPagerViewController: ContentTableViewDelegate {
+    
     public func didEndDragging(viewController: ContentTableViewController, willDecelerate decelerate: Bool) {
         guard !decelerate, viewController == self.selectedViewController else { return }
         self.tableViewsScroll()

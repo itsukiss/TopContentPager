@@ -12,6 +12,7 @@ final class CustomTopContentPagerViewController: TopContentPagerViewController {
     private let topView = TopView.instantiate()
     private let page1 = Page1ViewController.create()
     private let page2 = Page2ViewController.create()
+    private let page3 = Page3ViewController.create()
     
     override func setupWillLoadDataSource() {
         super.setupWillLoadDataSource()
@@ -29,6 +30,6 @@ extension CustomTopContentPagerViewController: TopContentPagerDataSource {
     }
     
     func topContentPagerViewControllerViewControllers(_ viewController: TopContentPagerViewController) -> [ContentTableBody] {
-        [page1, page2]
+        [page1, page2, page3]
     }
 }

@@ -68,6 +68,7 @@ public final class ContentTableViewController: UIViewController {
         tableView.separatorColor = .clear
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.contentInsetAdjustmentBehavior = .never
         tableView.refreshControl = viewController.refresh(sender: refreshControl, contentViewController: self) ? refreshControl : nil
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
         
