@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8435A4BF25BFFA1C00EEDA77 /* TopContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435A4BE25BFFA1C00EEDA77 /* TopContentView.swift */; };
-		8435A54225C061E400EEDA77 /* Page3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435A54125C061E400EEDA77 /* Page3ViewController.swift */; };
-		8435A54925C061F600EEDA77 /* Page3ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8435A54825C061F600EEDA77 /* Page3ViewController.storyboard */; };
-		8435A55025C0664E00EEDA77 /* Page3CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435A54F25C0664E00EEDA77 /* Page3CollectionCell.swift */; };
-		8435A55725C0665A00EEDA77 /* Page3CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8435A55625C0665A00EEDA77 /* Page3CollectionCell.xib */; };
+		8435A54225C061E400EEDA77 /* MyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435A54125C061E400EEDA77 /* MyPostViewController.swift */; };
+		8435A54925C061F600EEDA77 /* MyPostViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8435A54825C061F600EEDA77 /* MyPostViewController.storyboard */; };
+		8435A55025C0664E00EEDA77 /* MyPostCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435A54F25C0664E00EEDA77 /* MyPostCollectionCell.swift */; };
+		8435A55725C0665A00EEDA77 /* MyPostCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8435A55625C0665A00EEDA77 /* MyPostCollectionCell.xib */; };
 		843FD85625AE8EBF00AD615F /* NSObject+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD85525AE8EBF00AD615F /* NSObject+Name.swift */; };
 		843FD85D25AE8EEF00AD615F /* UITableView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD85C25AE8EEF00AD615F /* UITableView+Register.swift */; };
 		843FD88525AEA08200AD615F /* Page1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD88425AEA08200AD615F /* Page1ViewController.swift */; };
@@ -19,7 +19,6 @@
 		843FD89325AEA09A00AD615F /* Page1ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843FD89225AEA09A00AD615F /* Page1ViewController.storyboard */; };
 		843FD8A625AEA0B600AD615F /* Page2ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843FD8A525AEA0B600AD615F /* Page2ViewController.storyboard */; };
 		843FD8AD25AEA21E00AD615F /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD8AC25AEA21E00AD615F /* TopView.swift */; };
-		843FD8B425AEA22400AD615F /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843FD8B325AEA22400AD615F /* TopView.xib */; };
 		843FD8C225AEAC4C00AD615F /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD8C125AEAC4C00AD615F /* Storyboard.swift */; };
 		843FD8CE25AEC11A00AD615F /* NSObject+NibLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD8CD25AEC11A00AD615F /* NSObject+NibLoading.swift */; };
 		843FDA0625B0969100AD615F /* CustomTopContentPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FDA0525B0969100AD615F /* CustomTopContentPagerViewController.swift */; };
@@ -42,6 +41,7 @@
 		84BB33D925A86B450056A35F /* PagerItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB33D825A86B450056A35F /* PagerItemsView.swift */; };
 		84BB33E525A86B870056A35F /* PagerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB33E425A86B870056A35F /* PagerOptions.swift */; };
 		84BB33F125A872ED0056A35F /* PagerItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB33F025A872ED0056A35F /* PagerItemView.swift */; };
+		84D77DD725C0762C0035CA1D /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D77DD625C0762C0035CA1D /* TopView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,10 +70,10 @@
 
 /* Begin PBXFileReference section */
 		8435A4BE25BFFA1C00EEDA77 /* TopContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopContentView.swift; sourceTree = "<group>"; };
-		8435A54125C061E400EEDA77 /* Page3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page3ViewController.swift; sourceTree = "<group>"; };
-		8435A54825C061F600EEDA77 /* Page3ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Page3ViewController.storyboard; sourceTree = "<group>"; };
-		8435A54F25C0664E00EEDA77 /* Page3CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page3CollectionCell.swift; sourceTree = "<group>"; };
-		8435A55625C0665A00EEDA77 /* Page3CollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Page3CollectionCell.xib; sourceTree = "<group>"; };
+		8435A54125C061E400EEDA77 /* MyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostViewController.swift; sourceTree = "<group>"; };
+		8435A54825C061F600EEDA77 /* MyPostViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPostViewController.storyboard; sourceTree = "<group>"; };
+		8435A54F25C0664E00EEDA77 /* MyPostCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostCollectionCell.swift; sourceTree = "<group>"; };
+		8435A55625C0665A00EEDA77 /* MyPostCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPostCollectionCell.xib; sourceTree = "<group>"; };
 		843FD85525AE8EBF00AD615F /* NSObject+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Name.swift"; sourceTree = "<group>"; };
 		843FD85C25AE8EEF00AD615F /* UITableView+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Register.swift"; sourceTree = "<group>"; };
 		843FD88425AEA08200AD615F /* Page1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1ViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +81,6 @@
 		843FD89225AEA09A00AD615F /* Page1ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Page1ViewController.storyboard; sourceTree = "<group>"; };
 		843FD8A525AEA0B600AD615F /* Page2ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Page2ViewController.storyboard; sourceTree = "<group>"; };
 		843FD8AC25AEA21E00AD615F /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
-		843FD8B325AEA22400AD615F /* TopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
 		843FD8C125AEAC4C00AD615F /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		843FD8CD25AEC11A00AD615F /* NSObject+NibLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+NibLoading.swift"; sourceTree = "<group>"; };
 		843FDA0525B0969100AD615F /* CustomTopContentPagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTopContentPagerViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +112,7 @@
 		84BB33D825A86B450056A35F /* PagerItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerItemsView.swift; sourceTree = "<group>"; };
 		84BB33E425A86B870056A35F /* PagerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerOptions.swift; sourceTree = "<group>"; };
 		84BB33F025A872ED0056A35F /* PagerItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerItemView.swift; sourceTree = "<group>"; };
+		84D77DD625C0762C0035CA1D /* TopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,12 +233,12 @@
 				843FD89225AEA09A00AD615F /* Page1ViewController.storyboard */,
 				843FD88B25AEA08E00AD615F /* Page2ViewController.swift */,
 				843FD8A525AEA0B600AD615F /* Page2ViewController.storyboard */,
-				8435A54125C061E400EEDA77 /* Page3ViewController.swift */,
-				8435A54825C061F600EEDA77 /* Page3ViewController.storyboard */,
-				8435A54F25C0664E00EEDA77 /* Page3CollectionCell.swift */,
-				8435A55625C0665A00EEDA77 /* Page3CollectionCell.xib */,
+				8435A54125C061E400EEDA77 /* MyPostViewController.swift */,
+				8435A54825C061F600EEDA77 /* MyPostViewController.storyboard */,
+				8435A54F25C0664E00EEDA77 /* MyPostCollectionCell.swift */,
+				8435A55625C0665A00EEDA77 /* MyPostCollectionCell.xib */,
 				843FD8AC25AEA21E00AD615F /* TopView.swift */,
-				843FD8B325AEA22400AD615F /* TopView.xib */,
+				84D77DD625C0762C0035CA1D /* TopView.xib */,
 				843FD8C125AEAC4C00AD615F /* Storyboard.swift */,
 				843FD8CD25AEC11A00AD615F /* NSObject+NibLoading.swift */,
 				84BB33AA25A8655A0056A35F /* Main.storyboard */,
@@ -450,12 +450,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				843FD8B425AEA22400AD615F /* TopView.xib in Resources */,
 				84BB33B125A8655B0056A35F /* LaunchScreen.storyboard in Resources */,
 				84BB33AE25A8655B0056A35F /* Assets.xcassets in Resources */,
+				84D77DD725C0762C0035CA1D /* TopView.xib in Resources */,
 				843FD89325AEA09A00AD615F /* Page1ViewController.storyboard in Resources */,
-				8435A55725C0665A00EEDA77 /* Page3CollectionCell.xib in Resources */,
-				8435A54925C061F600EEDA77 /* Page3ViewController.storyboard in Resources */,
+				8435A55725C0665A00EEDA77 /* MyPostCollectionCell.xib in Resources */,
+				8435A54925C061F600EEDA77 /* MyPostViewController.storyboard in Resources */,
 				843FD8A625AEA0B600AD615F /* Page2ViewController.storyboard in Resources */,
 				84BB33AC25A8655A0056A35F /* Main.storyboard in Resources */,
 			);
@@ -509,10 +509,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				843FD88C25AEA08E00AD615F /* Page2ViewController.swift in Sources */,
-				8435A55025C0664E00EEDA77 /* Page3CollectionCell.swift in Sources */,
+				8435A55025C0664E00EEDA77 /* MyPostCollectionCell.swift in Sources */,
 				84BB33A925A8655A0056A35F /* ViewController.swift in Sources */,
 				843FD88525AEA08200AD615F /* Page1ViewController.swift in Sources */,
-				8435A54225C061E400EEDA77 /* Page3ViewController.swift in Sources */,
+				8435A54225C061E400EEDA77 /* MyPostViewController.swift in Sources */,
 				843FD8C225AEAC4C00AD615F /* Storyboard.swift in Sources */,
 				84BB33A525A8655A0056A35F /* AppDelegate.swift in Sources */,
 				843FD8AD25AEA21E00AD615F /* TopView.swift in Sources */,

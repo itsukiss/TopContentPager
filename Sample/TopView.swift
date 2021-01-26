@@ -9,12 +9,21 @@ import UIKit
 import TopContentPager
 
 class TopView: TopContentView {
-    @IBOutlet weak var topViewLabel: UILabel! {
+    
+    @IBOutlet weak var profileImageView: UIImageView! {
         didSet {
-            topViewLabel.numberOfLines = 0
+            profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+            profileImageView.clipsToBounds = true
         }
     }
-    @IBOutlet weak var bottomSpace: NSLayoutConstraint!
+    
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel! {
+        didSet {
+            descriptionLabel.numberOfLines = 0
+            descriptionLabel.lineBreakMode = .byClipping
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +31,9 @@ class TopView: TopContentView {
     }
     
     func prepare() {
-        topViewLabel.text = "山路を登りながら、こう考えた。智に働けば角が立つ。情に棹させば流される。意地を通せば窮屈だ。とかくに人の世は住みにくい。住みにくさが高じると、安い所へ引き越したくなる。"
+        profileImageView.image = UIImage(named: "noman")
+        userNameLabel.text = "Elyane Bent Caillot"
+        descriptionLabel.text = "Universed inside you.\nFounder & Designer & Creative Director.\nFrom France."
         updateLayout()
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 import TopContentPager
 
 final class Page2ViewController: UIViewController, ContentTableBody {
-    var pageTitle: String = "page2"
+    var pageTitle: String = "タグ付け"
     
     var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView! {
