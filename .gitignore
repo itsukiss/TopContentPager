@@ -1,0 +1,59 @@
+# Xcodeのビルド生成物
+# ビルドすると自動生成されるので無視
+build/
+DerivedData
+
+# Xcodeのプライベート設定
+# （ウィンドウサイズ、ブックマーク、ブレイクポイントなど）
+# 開発者ごとに違うものなので無視
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+# ! を最初につけると無視しない設定になる
+# 上記4つのデフォルト設定ファイルは無視しない
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+
+# VCSのメタデータが含まれ、コミットしてしまうとmergeが困難になるなどの問題が発生する
+# VCS = Version Controll System
+*.xccheckout
+
+# 同じ名前のクラスを定義しようとした時などに手動でdeprecated設定にすると生成されるファイル
+# ユーザごとに異なるので無視
+*.moved-aside
+
+# Headerファイルのマッピング設定
+# ユーザごとに異なるので無視
+*.hmap
+
+# iOSのアプリケーションファイル
+# ビルドすれば作成されるので無視
+*.ipa
+
+# Xcodeで何かするたびに編集されるファイル
+*.xcuserstate
+
+
+# ビルドのカスタムscheme（ロケーション等）
+# ユーザごとに異なるので無視
+xcuserdata
+
+# CocoaPodで外部ライブラリがインストールされるフォルダ
+# $ pod install すると自動生成されるので無視
+Pods/*
+
+# スワップファイル
+# アプリケーションのクラッシュに備えて、 vimエディタでの編集開始時に作成され、編集後に削除される編集情報の記録ファイル
+*.swp
+
+# gitkeepは空のフォルダが必要な場合に作成するファイル
+!.gitkeep
+
+# Macで、アイコンの位置や表示設定などの
+# フォルダ表示設定に関するメタデータを記録するための隠しファイル
+# プロジェクトには不要なので無視
+.DS_Store
