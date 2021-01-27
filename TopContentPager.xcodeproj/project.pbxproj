@@ -41,9 +41,12 @@
 		84BB33D925A86B450056A35F /* PagerItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB33D825A86B450056A35F /* PagerItemsView.swift */; };
 		84BB33E525A86B870056A35F /* PagerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB33E425A86B870056A35F /* PagerOptions.swift */; };
 		84BB33F125A872ED0056A35F /* PagerItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB33F025A872ED0056A35F /* PagerItemView.swift */; };
+		84C8D31A25C15B0B005CDC11 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8D31925C15B0B005CDC11 /* MockData.swift */; };
 		84D77DD725C0762C0035CA1D /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D77DD625C0762C0035CA1D /* TopView.xib */; };
 		84D77DED25C088210035CA1D /* Page1TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D77DEC25C088210035CA1D /* Page1TableCell.swift */; };
 		84D77DF425C0882D0035CA1D /* Page1TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D77DF325C0882D0035CA1D /* Page1TableCell.xib */; };
+		84D77DFB25C149840035CA1D /* NotificationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D77DFA25C149840035CA1D /* NotificationTableCell.swift */; };
+		84D77E0225C149910035CA1D /* NotificationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D77E0125C149910035CA1D /* NotificationTableCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,9 +117,12 @@
 		84BB33D825A86B450056A35F /* PagerItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerItemsView.swift; sourceTree = "<group>"; };
 		84BB33E425A86B870056A35F /* PagerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerOptions.swift; sourceTree = "<group>"; };
 		84BB33F025A872ED0056A35F /* PagerItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerItemView.swift; sourceTree = "<group>"; };
+		84C8D31925C15B0B005CDC11 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		84D77DD625C0762C0035CA1D /* TopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
 		84D77DEC25C088210035CA1D /* Page1TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1TableCell.swift; sourceTree = "<group>"; };
 		84D77DF325C0882D0035CA1D /* Page1TableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Page1TableCell.xib; sourceTree = "<group>"; };
+		84D77DFA25C149840035CA1D /* NotificationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableCell.swift; sourceTree = "<group>"; };
+		84D77E0125C149910035CA1D /* NotificationTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,12 +245,15 @@
 				843FD8A525AEA0B600AD615F /* Page2ViewController.storyboard */,
 				84D77DEC25C088210035CA1D /* Page1TableCell.swift */,
 				84D77DF325C0882D0035CA1D /* Page1TableCell.xib */,
+				84D77DFA25C149840035CA1D /* NotificationTableCell.swift */,
+				84D77E0125C149910035CA1D /* NotificationTableCell.xib */,
 				8435A54125C061E400EEDA77 /* MyPostViewController.swift */,
 				8435A54825C061F600EEDA77 /* MyPostViewController.storyboard */,
 				8435A54F25C0664E00EEDA77 /* MyPostCollectionCell.swift */,
 				8435A55625C0665A00EEDA77 /* MyPostCollectionCell.xib */,
 				843FD8AC25AEA21E00AD615F /* TopView.swift */,
 				84D77DD625C0762C0035CA1D /* TopView.xib */,
+				84C8D31925C15B0B005CDC11 /* MockData.swift */,
 				843FD8C125AEAC4C00AD615F /* Storyboard.swift */,
 				843FD8CD25AEC11A00AD615F /* NSObject+NibLoading.swift */,
 				84BB33AA25A8655A0056A35F /* Main.storyboard */,
@@ -461,6 +470,7 @@
 				84D77DD725C0762C0035CA1D /* TopView.xib in Resources */,
 				843FD89325AEA09A00AD615F /* Page1ViewController.storyboard in Resources */,
 				8435A55725C0665A00EEDA77 /* MyPostCollectionCell.xib in Resources */,
+				84D77E0225C149910035CA1D /* NotificationTableCell.xib in Resources */,
 				8435A54925C061F600EEDA77 /* MyPostViewController.storyboard in Resources */,
 				843FD8A625AEA0B600AD615F /* Page2ViewController.storyboard in Resources */,
 				84D77DF425C0882D0035CA1D /* Page1TableCell.xib in Resources */,
@@ -520,11 +530,13 @@
 				84BB33A925A8655A0056A35F /* ViewController.swift in Sources */,
 				843FD88525AEA08200AD615F /* Page1ViewController.swift in Sources */,
 				8435A54225C061E400EEDA77 /* MyPostViewController.swift in Sources */,
+				84C8D31A25C15B0B005CDC11 /* MockData.swift in Sources */,
 				843FD8C225AEAC4C00AD615F /* Storyboard.swift in Sources */,
 				84BB33A525A8655A0056A35F /* AppDelegate.swift in Sources */,
 				843FD8AD25AEA21E00AD615F /* TopView.swift in Sources */,
 				843FDA0625B0969100AD615F /* CustomTopContentPagerViewController.swift in Sources */,
 				84D77DED25C088210035CA1D /* Page1TableCell.swift in Sources */,
+				84D77DFB25C149840035CA1D /* NotificationTableCell.swift in Sources */,
 				843FD8CE25AEC11A00AD615F /* NSObject+NibLoading.swift in Sources */,
 				84BB33A725A8655A0056A35F /* SceneDelegate.swift in Sources */,
 			);

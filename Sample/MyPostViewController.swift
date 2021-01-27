@@ -61,32 +61,3 @@ extension MyPostViewController: UICollectionViewDataSource {
         return cell
     }
 }
-
-enum MockData {
-    static let postList: [UIImage] = [
-        UIImage(named: "umi")!,
-        UIImage(named: "yama1")!,
-        UIImage(named: "yuhi")!,
-        UIImage(named: "yama2")!,
-        UIImage(named: "umi")!,
-        UIImage(named: "yama1")!,
-        UIImage(named: "yuhi")!,
-        UIImage(named: "yama2")!,
-        UIImage(named: "umi")!,
-        UIImage(named: "yama1")!,
-        UIImage(named: "yuhi")!,
-        UIImage(named: "yama2")!,
-        UIImage(named: "umi")!,
-        UIImage(named: "yama1")!,
-        UIImage(named: "yuhi")!,
-        UIImage(named: "yama2")!,
-        UIImage(named: "umi")!,
-        UIImage(named: "yama1")!,
-        UIImage(named: "yuhi")!,
-        UIImage(named: "yama2")!,
-        UIImage(named: "umi")!,
-        UIImage(named: "yama1")!,
-        UIImage(named: "yuhi")!,
-        UIImage(named: "yama2")!,
-    ]
-}

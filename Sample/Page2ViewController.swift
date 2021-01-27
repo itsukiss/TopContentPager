@@ -11,6 +11,7 @@ import TopContentPager
 final class Page2ViewController: UIViewController, ContentTableBody {
     var pageTitle: String = "お知らせ"
     
+    private var mockData: [String] = []
     var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -26,6 +27,13 @@ final class Page2ViewController: UIViewController, ContentTableBody {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableView.register(UINib(nibName: "NotificationTableCell", bundle: nil), forCellReuseIdentifier: "NotificationTableCell")
+        
+        for _ in 0...20 {
+            let user = "user\(Int.random(in: 100000 ... 999999))"
+            let noti = MockData.notiList.randomElement() ?? ""
+            mockData.append("\(user)\(noti)")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,13 +44,12 @@ final class Page2ViewController: UIViewController, ContentTableBody {
 
 extension Page2ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        30
+        mockData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "p2Cell")
-        cell.imageView?.image = UIImage(named: "noman")
-        cell.textLabel?.text = "user748291にフォローされました。"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableCell", for: indexPath) as! NotificationTableCell
+        cell.prepare(text: mockData[indexPath.row])
         return cell
     }
 }
