@@ -1,5 +1,5 @@
 //
-//  Page1TableCell.swift
+//  TimelineTableCell.swift
 //  Sample
 //
 //  Created by 田中厳貴 on 2021/01/27.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Page1TableCell: UITableViewCell {
+class TimelineTableCell: UITableViewCell {
     
     @IBOutlet weak var profileImageView: UIImageView! {
         didSet {

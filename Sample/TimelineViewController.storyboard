@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Page1 View Controller-->
+        <!--Timeline View Controller-->
         <scene sceneID="jCa-79-yuI">
             <objects>
-                <viewController id="bav-ms-bge" customClass="Page1ViewController" customModule="Sample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bav-ms-bge" customClass="TimelineViewController" customModule="Sample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NqR-Qq-eWc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

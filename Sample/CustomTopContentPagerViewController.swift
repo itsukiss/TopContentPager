@@ -10,9 +10,9 @@ import TopContentPager
 
 final class CustomTopContentPagerViewController: TopContentPagerViewController {
     private let topView = TopView.instantiate()
-    private let page1 = Page1ViewController.create()
-    private let page2 = Page2ViewController.create()
     private let myPostVC = MyPostViewController.create()
+    private let timelineVC = TimelineViewController.create()
+    private let notificationVC = NotificationViewController.create()
     
     override func setupWillLoadDataSource() {
         super.setupWillLoadDataSource()
@@ -30,6 +30,6 @@ extension CustomTopContentPagerViewController: TopContentPagerDataSource {
     }
     
     func topContentPagerViewControllerViewControllers(_ viewController: TopContentPagerViewController) -> [ContentTableBody] {
-        [myPostVC, page1, page2]
+        [myPostVC, timelineVC, notificationVC]
     }
 }

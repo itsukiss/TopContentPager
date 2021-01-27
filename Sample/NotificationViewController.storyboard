@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Page2 View Controller-->
+        <!--Notification View Controller-->
         <scene sceneID="17t-JI-b6F">
             <objects>
-                <viewController id="qAK-2b-Fuh" customClass="Page2ViewController" customModule="Sample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qAK-2b-Fuh" customClass="NotificationViewController" customModule="Sample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mbg-gH-pdy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
