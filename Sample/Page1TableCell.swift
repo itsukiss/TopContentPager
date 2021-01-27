@@ -1,14 +1,13 @@
 //
-//  TopView.swift
+//  Page1TableCell.swift
 //  Sample
 //
-//  Created by 田中厳貴 on 2021/01/13.
+//  Created by 田中厳貴 on 2021/01/27.
 //
 
 import UIKit
-import TopContentPager
 
-class TopView: TopContentView {
+class Page1TableCell: UITableViewCell {
     
     @IBOutlet weak var profileImageView: UIImageView! {
         didSet {
@@ -16,25 +15,24 @@ class TopView: TopContentView {
             profileImageView.clipsToBounds = true
         }
     }
-    
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel! {
+    
+    @IBOutlet weak var postImageView: UIImageView! {
         didSet {
-            descriptionLabel.numberOfLines = 0
-            descriptionLabel.lineBreakMode = .byClipping
+            postImageView.contentMode = .scaleAspectFill
         }
     }
+    @IBOutlet weak var postNoteLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        updateTab(options: .init(indicatorHeight: 1))
-        prepare()
+        
     }
     
-    func prepare() {
+    func prepare(image: UIImage) {
         profileImageView.image = UIImage(named: "noman")
         userNameLabel.text = "Elyane Bent Caillot"
-        descriptionLabel.text = "Universed inside you.\nFounder & Designer & Creative Director.\nFrom France."
-        updateLayout()
+        postImageView.image = image
+        postNoteLabel.text = "This is my favorite place.\nI went there in last summer.\n#summer #sea #favorite"
     }
 }

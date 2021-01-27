@@ -9,7 +9,7 @@ import UIKit
 import TopContentPager
 
 final class Page2ViewController: UIViewController, ContentTableBody {
-    var pageTitle: String = "タグ付け"
+    var pageTitle: String = "お知らせ"
     
     var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView! {
@@ -25,6 +25,7 @@ final class Page2ViewController: UIViewController, ContentTableBody {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.separatorStyle = .none
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,12 +36,13 @@ final class Page2ViewController: UIViewController, ContentTableBody {
 
 extension Page2ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        15
+        30
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "p2Cell")
-        cell.textLabel?.text = "item\(indexPath.row)"
+        cell.imageView?.image = UIImage(named: "noman")
+        cell.textLabel?.text = "user748291にフォローされました。"
         return cell
     }
 }

@@ -42,6 +42,8 @@
 		84BB33E525A86B870056A35F /* PagerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB33E425A86B870056A35F /* PagerOptions.swift */; };
 		84BB33F125A872ED0056A35F /* PagerItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB33F025A872ED0056A35F /* PagerItemView.swift */; };
 		84D77DD725C0762C0035CA1D /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D77DD625C0762C0035CA1D /* TopView.xib */; };
+		84D77DED25C088210035CA1D /* Page1TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D77DEC25C088210035CA1D /* Page1TableCell.swift */; };
+		84D77DF425C0882D0035CA1D /* Page1TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D77DF325C0882D0035CA1D /* Page1TableCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +115,8 @@
 		84BB33E425A86B870056A35F /* PagerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerOptions.swift; sourceTree = "<group>"; };
 		84BB33F025A872ED0056A35F /* PagerItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerItemView.swift; sourceTree = "<group>"; };
 		84D77DD625C0762C0035CA1D /* TopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
+		84D77DEC25C088210035CA1D /* Page1TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1TableCell.swift; sourceTree = "<group>"; };
+		84D77DF325C0882D0035CA1D /* Page1TableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Page1TableCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +237,8 @@
 				843FD89225AEA09A00AD615F /* Page1ViewController.storyboard */,
 				843FD88B25AEA08E00AD615F /* Page2ViewController.swift */,
 				843FD8A525AEA0B600AD615F /* Page2ViewController.storyboard */,
+				84D77DEC25C088210035CA1D /* Page1TableCell.swift */,
+				84D77DF325C0882D0035CA1D /* Page1TableCell.xib */,
 				8435A54125C061E400EEDA77 /* MyPostViewController.swift */,
 				8435A54825C061F600EEDA77 /* MyPostViewController.storyboard */,
 				8435A54F25C0664E00EEDA77 /* MyPostCollectionCell.swift */,
@@ -457,6 +463,7 @@
 				8435A55725C0665A00EEDA77 /* MyPostCollectionCell.xib in Resources */,
 				8435A54925C061F600EEDA77 /* MyPostViewController.storyboard in Resources */,
 				843FD8A625AEA0B600AD615F /* Page2ViewController.storyboard in Resources */,
+				84D77DF425C0882D0035CA1D /* Page1TableCell.xib in Resources */,
 				84BB33AC25A8655A0056A35F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,6 +524,7 @@
 				84BB33A525A8655A0056A35F /* AppDelegate.swift in Sources */,
 				843FD8AD25AEA21E00AD615F /* TopView.swift in Sources */,
 				843FDA0625B0969100AD615F /* CustomTopContentPagerViewController.swift in Sources */,
+				84D77DED25C088210035CA1D /* Page1TableCell.swift in Sources */,
 				843FD8CE25AEC11A00AD615F /* NSObject+NibLoading.swift in Sources */,
 				84BB33A725A8655A0056A35F /* SceneDelegate.swift in Sources */,
 			);
