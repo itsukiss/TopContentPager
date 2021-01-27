@@ -7,9 +7,13 @@
 
 import UIKit
 
-public protocol TopContentPagerDataSource: class {
+public protocol TopContentPagerDataSource: AnyObject {
     func topContentPagerViewControllerTopContentView(_ viewController: TopContentPagerViewController) -> TopContentView
     func topContentPagerViewControllerViewControllers(_ viewController: TopContentPagerViewController) -> [ContentTableBody]
+}
+
+@objc public protocol TopContentPagerDelegate: AnyObject {
+    @objc optional func topContentPagerViewControllerTabTopMargin(_ viewController: TopContentPagerViewController) -> CGFloat
 }
 
 class EscapeView: UIView { }
@@ -17,6 +21,7 @@ class EscapeView: UIView { }
 open class TopContentPagerViewController: UIViewController, UIGestureRecognizerDelegate {
     
     public weak var dataSource: TopContentPagerDataSource?
+    public weak var delegate: TopContentPagerDelegate?
     public var viewControllers: [ContentTableViewController] = []
     public var selectedViewController: ContentTableViewController {
             viewControllers[selectedIndex]
@@ -40,6 +45,9 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
     public private(set) var tabHeight: CGFloat!
     public private(set) var headerHeight: CGFloat!
     public private(set) var safeAreaBar = UIView()
+    public var topMargin: CGFloat {
+        delegate?.topContentPagerViewControllerTabTopMargin?(self) ?? 0
+    }
 
     private var topView: TopContentView!
     private let scrollView = UIScrollView()
@@ -90,7 +98,7 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
         escapeView.layoutIfNeeded()
         addContentViewToEscapeView()
         viewControllers.forEach { $0.tableView.reloadData() }
-        tabHeight = topView.tabViewHeight
+        tabHeight = topView.tabViewHeight + topMargin
         headerHeight = topView.estimateHeight
         topView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: headerHeight)
         addContentViewToCell()
@@ -102,7 +110,7 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
         topView = dataSource.topContentPagerViewControllerTopContentView(self)
         topView.delegate = self
         topView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: topView.estimateHeight)
-        tabHeight = topView.tabViewHeight
+        tabHeight = topView.tabViewHeight + topMargin
         headerHeight = topView.estimateHeight
         let bodyViewControllers = dataSource.topContentPagerViewControllerViewControllers(self)
         tabBarTitles = bodyViewControllers.map { $0.pageTitle }
