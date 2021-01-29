@@ -14,8 +14,7 @@ final class MyPostViewController: UIViewController, ContentTableBody {
         static let itemSpace: CGFloat = 1
     }
     
-    var pageTitle: String = "投稿"
-    
+    var pagerItem: PagerItem = .text(.init(title: "投稿"))
     var scrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {

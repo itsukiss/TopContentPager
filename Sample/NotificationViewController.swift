@@ -9,7 +9,8 @@ import UIKit
 import TopContentPager
 
 final class NotificationViewController: UIViewController, ContentTableBody {
-    var pageTitle: String = "お知らせ"
+    var pagerItem: PagerItem = .text(.init(title: "お知らせ"))
+    
     
     private var mockData: [String] = []
     var scrollView: UIScrollView!

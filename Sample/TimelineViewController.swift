@@ -9,7 +9,7 @@ import UIKit
 import TopContentPager
 
 final class TimelineViewController: UIViewController, ContentTableBody {
-    var pageTitle: String = "タイムライン"
+    var pagerItem: PagerItem = .text(.init(title: "タイムライン"))
     
     var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView! {
