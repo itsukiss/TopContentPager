@@ -56,10 +56,10 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
     private var escapeViewTopConstraint: NSLayoutConstraint?
     private var escapeViewHeightConstraint: NSLayoutConstraint?
     private var containerViews: [UIView] = []
-    private var tabBarTitles: [String] = []
+    private var tabBarTitles: [PagerItem] = []
     private var contentOffsetX: CGFloat = 0
     private lazy var setupLayout: Void = {
-        tabBarTitles.map { PagerItem(title: $0) }.forEach { topView.tabView?.addItem(item: $0) }
+        tabBarTitles.forEach { topView.tabView?.addItem(item: $0) }
         selectedIndex = 0
         topView.tabView?.adjustSelected(page: selectedIndex)
         topView.tabView?.update(pagerOptions: .init())
@@ -113,7 +113,7 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
         tabHeight = topView.tabViewHeight + topMargin
         headerHeight = topView.estimateHeight
         let bodyViewControllers = dataSource.topContentPagerViewControllerViewControllers(self)
-        tabBarTitles = bodyViewControllers.map { $0.pageTitle }
+        tabBarTitles = bodyViewControllers.map { $0.pagerItem }
         bodyViewControllers.forEach { item in
             let contentVC = ContentTableViewController.create(with: .init(topView: topView, viewController: item))
             viewControllers.append(contentVC)

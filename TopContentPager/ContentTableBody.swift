@@ -8,7 +8,7 @@
 import UIKit
 
 public protocol ContentTableBody: UIViewController {
-    var pageTitle: String { get }
+    var pagerItem: PagerItem { get }
     var scrollView: UIScrollView! { get }
     @discardableResult func refresh(sender: UIRefreshControl, contentViewController: ContentTableViewController) -> Bool
 }

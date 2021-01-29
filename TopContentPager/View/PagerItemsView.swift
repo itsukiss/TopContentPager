@@ -7,14 +7,38 @@
 
 import UIKit
 
-public struct PagerItem {
-
-    public private(set) var title: String
-
-    public init(title: String) {
-        self.title = title
+public enum PagerItem {
+    case text(TextItem)
+    case image(ImageItem)
+    case textAndImage(text: TextItem, image: ImageItem)
+    case custom(UIView)
+    
+    public struct TextItem {
+        let title: String
+        let font: UIFont
+        
+        public init(title: String, font: UIFont = UIFont.boldSystemFont(ofSize: 13)) {
+            self.title = title
+            self.font = font
+        }
     }
+
+    public struct ImageItem {
+        let image: UIImage?
+        let size: CGSize
+        let cornerRadius: CGFloat
+        
+        public init(image: UIImage?, size: CGSize = CGSize(width: 24, height: 24), cornerRadius: CGFloat = 0) {
+            self.image = image
+            self.size = size
+            self.cornerRadius = cornerRadius
+        }
+    }
+    
+    
 }
+
+
 
 final public class PagerItemsView: UIView {
 

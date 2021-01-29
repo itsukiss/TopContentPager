@@ -11,10 +11,15 @@ final public class PagerItemView: UIView {
     private var backView = UIView()
     private var titleLabel = UILabel()
     private var badgeView = UIView()
+    private var stackView = UIStackView()
+    private var imageView = UIImageView()
     
     var activeColor: UIColor = UIColor.black
     var deactveColor: UIColor = UIColor.gray
     var activeBackgroundColor: UIColor = UIColor.clear
+    
+    private var imageViewHeight: NSLayoutConstraint?
+    private var imageViewWidth: NSLayoutConstraint?
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,13 +40,40 @@ final public class PagerItemView: UIView {
             backView.leadingAnchor.constraint(equalTo: leadingAnchor)
         ])
         
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(titleLabel)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.spacing = 4
+        addSubview(stackView)
+        let stackViewTrailing = stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        let stackViewLeading = stackView.leadingAnchor.constraint(equalTo: leadingAnchor)
+        
+        stackViewTrailing.priority = .defaultLow
+        stackViewLeading.priority = .defaultLow
+        
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            stackView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
+            stackView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
+            stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stackViewTrailing,
+            stackViewLeading
         ])
-
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageViewHeight = imageView.heightAnchor.constraint(equalToConstant: 24)
+        imageViewWidth = imageView.widthAnchor.constraint(equalToConstant: 24)
+        
+        NSLayoutConstraint.activate([
+            imageViewHeight!,
+            imageViewWidth!
+        ])
+        stackView.addArrangedSubview(imageView)
+        stackView.addArrangedSubview(titleLabel)
         
         badgeView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(badgeView)
@@ -81,7 +113,41 @@ final public class PagerItemView: UIView {
     }
 
     public func configure(with res: PagerItem) {
-        self.titleLabel.text = res.title
+        switch res {
+        case .text(let textItem):
+            self.titleLabel.isHidden = false
+            self.imageView.isHidden = true
+            self.titleLabel.text = textItem.title
+            self.titleLabel.font = textItem.font
+        case .image(let imageItem):
+            self.titleLabel.isHidden = true
+            self.imageView.isHidden = false
+            self.imageView.image = imageItem.image
+            self.imageViewHeight?.constant = imageItem.size.height
+            self.imageViewWidth?.constant = imageItem.size.width
+            self.imageView.layer.cornerRadius = imageItem.cornerRadius
+            self.imageView.clipsToBounds = true
+        case .textAndImage(let textItem, let imageItem):
+            self.titleLabel.isHidden = false
+            self.imageView.isHidden = false
+            self.titleLabel.text = textItem.title
+            self.titleLabel.font = textItem.font
+            self.imageView.image = imageItem.image
+            self.imageViewHeight?.constant = imageItem.size.height
+            self.imageViewWidth?.constant = imageItem.size.width
+            self.imageView.layer.cornerRadius = imageItem.cornerRadius
+            self.imageView.clipsToBounds = true
+        case .custom(let view):
+            self.stackView.isHidden = true
+            view.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(view)
+            NSLayoutConstraint.activate([
+                view.topAnchor.constraint(equalTo: topAnchor),
+                view.bottomAnchor.constraint(equalTo: bottomAnchor),
+                view.trailingAnchor.constraint(equalTo: trailingAnchor),
+                view.leadingAnchor.constraint(equalTo: leadingAnchor)
+            ])
+        }
     }
 
     public func badge(isHidden: Bool) {
