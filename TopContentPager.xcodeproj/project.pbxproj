@@ -237,26 +237,11 @@
 			children = (
 				84BB33A425A8655A0056A35F /* AppDelegate.swift */,
 				84BB33A625A8655A0056A35F /* SceneDelegate.swift */,
-				84BB33A825A8655A0056A35F /* ViewController.swift */,
-				843FDA0525B0969100AD615F /* CustomTopContentPagerViewController.swift */,
-				843FD88425AEA08200AD615F /* TimelineViewController.swift */,
-				843FD89225AEA09A00AD615F /* TimelineViewController.storyboard */,
-				843FD88B25AEA08E00AD615F /* NotificationViewController.swift */,
-				843FD8A525AEA0B600AD615F /* NotificationViewController.storyboard */,
-				84D77DEC25C088210035CA1D /* TimelineTableCell.swift */,
-				84D77DF325C0882D0035CA1D /* TimelineTableCell.xib */,
-				84D77DFA25C149840035CA1D /* NotificationTableCell.swift */,
-				84D77E0125C149910035CA1D /* NotificationTableCell.xib */,
-				8435A54125C061E400EEDA77 /* MyPostViewController.swift */,
-				8435A54825C061F600EEDA77 /* MyPostViewController.storyboard */,
-				8435A54F25C0664E00EEDA77 /* MyPostCollectionCell.swift */,
-				8435A55625C0665A00EEDA77 /* MyPostCollectionCell.xib */,
-				843FD8AC25AEA21E00AD615F /* TopView.swift */,
-				84D77DD625C0762C0035CA1D /* TopView.xib */,
-				84C8D31925C15B0B005CDC11 /* MockData.swift */,
-				843FD8C125AEAC4C00AD615F /* Storyboard.swift */,
-				843FD8CD25AEC11A00AD615F /* NSObject+NibLoading.swift */,
-				84BB33AA25A8655A0056A35F /* Main.storyboard */,
+				84C8D36C25C4FE2C005CDC11 /* ViewController */,
+				84C8D37225C4FE68005CDC11 /* Cell */,
+				84C8D37825C4FE8C005CDC11 /* View */,
+				84C8D38425C4FEBC005CDC11 /* Entity */,
+				84C8D37E25C4FEA3005CDC11 /* Utility */,
 				84BB33AD25A8655B0056A35F /* Assets.xcassets */,
 				84BB33AF25A8655B0056A35F /* LaunchScreen.storyboard */,
 				84BB33B225A8655B0056A35F /* Info.plist */,
@@ -290,6 +275,61 @@
 				84BB33E425A86B870056A35F /* PagerOptions.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		84C8D36C25C4FE2C005CDC11 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84BB33A825A8655A0056A35F /* ViewController.swift */,
+				84BB33AA25A8655A0056A35F /* Main.storyboard */,
+				843FDA0525B0969100AD615F /* CustomTopContentPagerViewController.swift */,
+				8435A54125C061E400EEDA77 /* MyPostViewController.swift */,
+				8435A54825C061F600EEDA77 /* MyPostViewController.storyboard */,
+				843FD88425AEA08200AD615F /* TimelineViewController.swift */,
+				843FD89225AEA09A00AD615F /* TimelineViewController.storyboard */,
+				843FD88B25AEA08E00AD615F /* NotificationViewController.swift */,
+				843FD8A525AEA0B600AD615F /* NotificationViewController.storyboard */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		84C8D37225C4FE68005CDC11 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				84D77DEC25C088210035CA1D /* TimelineTableCell.swift */,
+				84D77DF325C0882D0035CA1D /* TimelineTableCell.xib */,
+				84D77DFA25C149840035CA1D /* NotificationTableCell.swift */,
+				84D77E0125C149910035CA1D /* NotificationTableCell.xib */,
+				8435A54F25C0664E00EEDA77 /* MyPostCollectionCell.swift */,
+				8435A55625C0665A00EEDA77 /* MyPostCollectionCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		84C8D37825C4FE8C005CDC11 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				843FD8AC25AEA21E00AD615F /* TopView.swift */,
+				84D77DD625C0762C0035CA1D /* TopView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84C8D37E25C4FEA3005CDC11 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				843FD8C125AEAC4C00AD615F /* Storyboard.swift */,
+				843FD8CD25AEC11A00AD615F /* NSObject+NibLoading.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		84C8D38425C4FEBC005CDC11 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				84C8D31925C15B0B005CDC11 /* MockData.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
