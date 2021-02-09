@@ -15,7 +15,7 @@
 </a>
 </p>
 
-# OverView
+# Overview
 <img src="https://github.com/itsukiss/Assets/blob/main/TopContentPager/demo.gif" width="300" align='left'>
 
 ## What is `TopContentPager` ?
@@ -88,6 +88,7 @@ class TopView: TopContentView {
 ```
 
 that's all. you can use `TopContentViewController`.
+if you want to customize, you read properties section and sample code.
 
 # Logic
 ## View Structure
@@ -106,6 +107,41 @@ coming soon...
 
 # Sample
 coming soon...
+
+# Properties and functions
+## TopContentPagerViewController
+| property  | access | description |
+|:-:|:-:|:-:|
+| selectedIndex | get, set | current page index |
+| dataSource | get, set | dataSource for topview and pageViewControllers |
+| delegate | get, set | see `TopContentPagerDelegate`. it is able to make TopMargin on TopView. |
+| viewControllers | get | innner ViewControllers with TableView |
+| selectedViewController | get | current page ViewController |
+| tabHeight | get | PagerItemsView's Height |
+| headerHeight | get | TopView's Height |
+| topMargin | get | TopMarginHeight by delegate |
+
+## TopContentView
+| property  | access | description |
+|:-:|:-:|:-:|
+| isHideTabView | get, override | flag to hide pagerItemsView |
+| tabView | get, set | PagerItemsView |
+| dataSource | get, set | see `TopContentViewDataSource`. you can set TopViewHeight if you don't want to use autolayout. |
+| tabViewHeight | get | PagerItemsView's Height |
+| estimateHeight | get | TopView's Height |
+
+| function | description |
+|:-:|:-:|
+| updateTab(options: UpdatePagerOptions) | customize PagerItemsView. see `UpdatePagerOptions` properties in code. |
+| updateLayout() | if you update TopView autolayout, you have to call this method. |
+
+## PagerItem
+| case | description |
+|:-:|:-:|
+| text | you can set page title text. (text and font) |
+| image | you can set page title image. (image, size, and cornerRaius) |
+| textAndImage | you can set page title text on the right side of the image |
+| custom | you can set custom view for page title. |
 
 # Installation
 ## CocoaPods
