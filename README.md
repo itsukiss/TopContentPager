@@ -33,7 +33,7 @@ There are many other complicated parts regarding scrolling, but I will omit them
 See the `Logic` section for more details.
 
 `TopContentPager` makes it easy to create such pages without having to worry about these difficult issues.
-<br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
 
 
 # Usage
@@ -100,22 +100,37 @@ That's all. you can use `TopContentViewController`.
 If you want to customize, you read properties section and sample code.
 
 # Logic
-## View Structure
-coming soon...
-
+## View Hierarchy
+```
+TopContentViewController.View
+├ ScrollView
+| ├ ScrollContentView
+| └ ContentTableViewController.View
+|   └ ContentInnerTableView
+|     ├ ContentTopCell
+|     | └ （TopContentView) *When you scroll vertically.
+|     └ ContentBodyCell
+|       └ YourPageViewController.View extended ContentTableBody
+└ EscapeView
+  └ (TopContentView) *When you scroll horizontally.
+```
 <p align='center'>
 <img src='https://github.com/itsukiss/Assets/blob/main/TopContentPager/TopContentPagerStructure.png'>
 </p>
 
 ## Fix Scrollable Header View Logic
-coming soon...
+See the gif image below for the logic of scrolling.
+
+Sorry, `UIView.TopContentProtocol` in the image is old.
+Now, you can use `TopContentView`.
 
 <p align='center'>
 <img src='https://github.com/itsukiss/Assets/blob/main/TopContentPager/TopContentPagerLogic.gif' width='800px'>
 </p>
 
 # Sample
-coming soon...
+you can get Sample Code.
+It's in the `Sample` folder in this repository.
 
 # Properties and functions
 ## TopContentPagerViewController
