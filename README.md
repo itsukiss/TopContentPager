@@ -30,18 +30,18 @@ Because the top header also needs to be scrolled along with the UITableView.
 
 Also, because the header at the top is common, if you scroll to the top on any page, you need to scroll to the top on all other pages.
 There are many other complicated parts regarding scrolling, but I will omit them here.
-See the Logic section for more details.
+See the `Logic` section for more details.
 
-TopContentPager makes it easy to create such pages without having to worry about these difficult issues.
-<br><br><br><br><br><br><br><br>
+`TopContentPager` makes it easy to create such pages without having to worry about these difficult issues.
+<br><br><br><br><br><br><br><br><br>
 
 
 # Usage
 1. ***Make Base Class***
 
-first, you can make base class extended `TopContentPagerViewController` and add `TopContentPagerDataSource` to that.
+First, you can make base class extended `TopContentPagerViewController` and add `TopContentPagerDataSource` to that.
 
-then, you must add `setupWillLoadDataSource()` function and bind dataSource in the function.
+Then, you must add `setupWillLoadDataSource()` function and bind dataSource in the function.
 ```swift
 class CustomTopContentPagerViewController: TopContentPagerViewController {
     
@@ -69,11 +69,11 @@ extension CustomTopContentPagerViewController: TopContentPagerDataSource {
 ```
 2. ***Make Content Page***
 
-second, please add `TopContentTableBody` to every ViewController to use them as page.
+Second, please add `TopContentTableBody` to every ViewController to use them as page.
 
-you can set pagerItem. (`PagerItem` has types `.text`, `.image`, `.textAndImage`, `.custom`)
+You can set pagerItem. (`PagerItem` has types `.text`, `.image`, `.textAndImage`, `.custom`)
 
-so, need to set tableView to scrollView.
+So, need to set tableView to scrollView.
 ```swift
 class Page1ViewController: UIViewController, ContentTableBody {
     
@@ -88,7 +88,7 @@ class Page1ViewController: UIViewController, ContentTableBody {
 ```
 3. ***Make TopView***
 
-finally, make TopView extended `TopContentView`.
+Finally, make TopView extended `TopContentView`.
 
 ```swift
 class TopView: TopContentView {    
@@ -96,8 +96,8 @@ class TopView: TopContentView {
 }
 ```
 
-that's all. you can use `TopContentViewController`.
-if you want to customize, you read properties section and sample code.
+That's all. you can use `TopContentViewController`.
+If you want to customize, you read properties section and sample code.
 
 # Logic
 ## View Structure
