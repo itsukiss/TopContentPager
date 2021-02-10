@@ -19,12 +19,21 @@
 <img src="https://github.com/itsukiss/Assets/blob/main/TopContentPager/demo.gif" width="300" align='left'>
 
 ## What is `TopContentPager` ?
-`TopContentPager` is PagerViewController like Instagram's MyPage.
+`TopContentPager` is framework you can make page like Instagram's MyPage simply.
 
 Specifically, This is UIPageViewController with common scrollable headerView and PageSection fixed at the top in all pages.
 
-It enables you to make rich pager simply.
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+A big feature of TopContentPager is that there is a common header that can be scrolled to the top.
+
+It is very difficult to implement such an implementation using ordinary UIPageViewController and UITableView.
+Because the top header also needs to be scrolled along with the UITableView.
+
+Also, because the header at the top is common, if you scroll to the top on any page, you need to scroll to the top on all other pages.
+There are many other complicated parts regarding scrolling, but I will omit them here.
+See the Logic section for more details.
+
+TopContentPager makes it easy to create such pages without having to worry about these difficult issues.
+<br><br><br><br><br><br><br><br>
 
 
 # Usage
