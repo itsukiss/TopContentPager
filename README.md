@@ -165,7 +165,9 @@ It's in the `Sample` folder in this repository.
 | text | you can set page title text. (text and font) |
 | image | you can set page title image. (image, size, and cornerRaius) |
 | textAndImage | you can set page title text on the right side of the image |
-| custom | you can set custom view for page title. |
+| custom | you can set custom view for page title. you have to make custom view with `PageItemView` protocol. |
+
+<img src='https://github.com/itsukiss/Assets/blob/main/TopContentPager/pager_item_view_description.png' width='500px'>
 
 # Installation
 ## CocoaPods
