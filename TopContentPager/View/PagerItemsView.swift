@@ -11,7 +11,7 @@ public enum PagerItem {
     case text(TextItem)
     case image(ImageItem)
     case textAndImage(text: TextItem, image: ImageItem)
-    case custom(UIView)
+    case custom(PagerItemView)
     
     public struct TextItem {
         let title: String
@@ -94,17 +94,25 @@ final public class PagerItemsView: UIView {
         self.indicator.backgroundColor = options.indicatorColor
         itemViews.forEach { itemView in
             itemView.activeColor = options.activeLabelColor
-            itemView.deactveColor = options.deactiveLabelColor
+            itemView.deactiveColor = options.deactiveLabelColor
             itemView.activeBackgroundColor = options.activeBackgroundColor
         }
     }
 
     func addItem(item: PagerItem) {
         self.items.append(item)
-        let itemView = PagerItemView(frame: CGRect(x: 0, y: 0, width: self.indicatorMinWidth, height: self.bounds.height))
-        itemView.configure(with: item)
-        self.itemViews.append(itemView)
-        self.addSubview(itemView)
+        switch item {
+        case .text, .image, .textAndImage:
+            let itemView = DefaultPagerItemView(frame: CGRect(x: 0, y: 0, width: self.indicatorMinWidth, height: self.bounds.height))
+            itemView.configure(with: item)
+            self.itemViews.append(itemView)
+            self.addSubview(itemView)
+        case .custom(let itemView):
+            itemView.frame = CGRect(x: 0, y: 0, width: self.indicatorMinWidth, height: self.bounds.height)
+            self.itemViews.append(itemView)
+            self.addSubview(itemView)
+        }
+        
         self.setNeedsLayout()
         updateView()
     }

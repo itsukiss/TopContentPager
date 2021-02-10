@@ -9,7 +9,7 @@ import UIKit
 import TopContentPager
 
 final class NotificationViewController: UIViewController, ContentTableBody {
-    var pagerItem: PagerItem = .text(.init(title: "お知らせ"))
+    var pagerItem: PagerItem = .textAndImage(text: .init(title: "お知らせ"), image: .init(image: UIImage(named: "notification")))
     
     
     private var mockData: [String] = []

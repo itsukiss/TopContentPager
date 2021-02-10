@@ -22,7 +22,6 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
     
     public weak var dataSource: TopContentPagerDataSource?
     public weak var delegate: TopContentPagerDelegate?
-    public var viewControllers: [ContentTableViewController] = []
     public var selectedViewController: ContentTableViewController {
             viewControllers[selectedIndex]
     }
@@ -42,6 +41,7 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
         }
     }
     
+    public private(set) var viewControllers: [ContentTableViewController] = []
     public private(set) var tabHeight: CGFloat!
     public private(set) var headerHeight: CGFloat!
     public private(set) var safeAreaBar = UIView()

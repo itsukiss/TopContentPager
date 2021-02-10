@@ -47,6 +47,7 @@
 		84D77DF425C0882D0035CA1D /* TimelineTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D77DF325C0882D0035CA1D /* TimelineTableCell.xib */; };
 		84D77DFB25C149840035CA1D /* NotificationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D77DFA25C149840035CA1D /* NotificationTableCell.swift */; };
 		84D77E0225C149910035CA1D /* NotificationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D77E0125C149910035CA1D /* NotificationTableCell.xib */; };
+		84DC4E9925D3A5C500BA8ACB /* DefaultPagerItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC4E9825D3A5C500BA8ACB /* DefaultPagerItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		84D77DF325C0882D0035CA1D /* TimelineTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineTableCell.xib; sourceTree = "<group>"; };
 		84D77DFA25C149840035CA1D /* NotificationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableCell.swift; sourceTree = "<group>"; };
 		84D77E0125C149910035CA1D /* NotificationTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableCell.xib; sourceTree = "<group>"; };
+		84DC4E9825D3A5C500BA8ACB /* DefaultPagerItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPagerItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +274,7 @@
 			children = (
 				84BB33D825A86B450056A35F /* PagerItemsView.swift */,
 				84BB33F025A872ED0056A35F /* PagerItemView.swift */,
+				84DC4E9825D3A5C500BA8ACB /* DefaultPagerItemView.swift */,
 				84BB33E425A86B870056A35F /* PagerOptions.swift */,
 			);
 			path = View;
@@ -546,6 +549,7 @@
 				84BB33F125A872ED0056A35F /* PagerItemView.swift in Sources */,
 				843FD85D25AE8EEF00AD615F /* UITableView+Register.swift in Sources */,
 				84BB338E25A85FBC0056A35F /* ContentBodyCell.swift in Sources */,
+				84DC4E9925D3A5C500BA8ACB /* DefaultPagerItemView.swift in Sources */,
 				84BB33E525A86B870056A35F /* PagerOptions.swift in Sources */,
 				84BB33D925A86B450056A35F /* PagerItemsView.swift in Sources */,
 				84BB339925A85FBC0056A35F /* TopContentPagerViewController.swift in Sources */,
