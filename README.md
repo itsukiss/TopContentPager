@@ -57,13 +57,13 @@ class CustomTopContentPagerViewController: TopContentPagerViewController {
 
 extension CustomTopContentPagerViewController: TopContentPagerDataSource {
     func topContentPagerViewControllerTopContentView(_ viewController: TopContentPagerViewController) -> TopContentView {
-        // 共通のHeaderViewを返す
+        // return common HeaderView in all pages.
         TopView()
     }
     
     func topContentPagerViewControllerViewControllers(_ viewController: TopContentPagerViewController) -> [ContentTableBody] {
-        // PageとなるそれぞれのViewController
-        [Page1ViewController(), Page2ViewController(), Page2ViewController()]
+        // return ViewControllers for each page.
+        [Page1ViewController(), Page2ViewController(), Page3ViewController()]
     }
 }
 ```
