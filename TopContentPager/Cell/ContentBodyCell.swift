@@ -1,9 +1,8 @@
 //
 //  ContentBodyCell.swift
-//  tapple
+//  TopContentPager
 //
-//  Created by 田中 厳貴 on 2020/12/23.
-//  Copyright © 2020 MatchingAgent, Inc. All rights reserved.
+//  Created by 田中厳貴 on 2021/01/08.
 //
 
 import UIKit
