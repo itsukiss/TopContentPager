@@ -73,7 +73,7 @@ Second, please add `TopContentTableBody` to every ViewController to use them as 
 
 You can set pagerItem. (`PagerItem` has types `.text`, `.image`, `.textAndImage`, `.custom`)
 
-So, need to set tableView to scrollView.
+So, need to set tableView(or collectionView) to scrollView.
 ```swift
 class Page1ViewController: UIViewController, ContentTableBody {
     
