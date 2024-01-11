@@ -1,33 +1,26 @@
-//
-//  WishDetailInformationViewController.swift
-//  TopContentPager
-//
-//  Created by 田中厳貴 on 2021/01/08.
-//
-
 import UIKit
 
 public protocol ContentTableViewDelegate: class {
-    func didEndDragging(viewController: ContentTableViewController, willDecelerate decelerate: Bool)
-    func didEndDecelerationg(viewController: ContentTableViewController)
     func didScroll(viewController: ContentTableViewController)
 }
 
 public final class ContentTableViewController: UIViewController {
 
     public var tableView = ContentInnerTableView()
- 
+
     private var observation: NSKeyValueObservation?
     private var refreshControl = UIRefreshControl()
     weak var delegate: ContentTableViewDelegate?
     public private(set) var viewController: ContentTableBody!
     lazy var setupContentHeight: Void = {
         observation = nil
-        observation = viewController.scrollView.observe(\.contentSize, options: [.new, .old, .prior]) { [weak self] ( _, contentSize) in
+        observation = viewController.scrollView.observe(\.contentSize, options: [.new, .old, .prior]) { [weak self] (_, contentSize) in
             if let newValue = contentSize.newValue {
                 self?.bodyContentHeight = newValue.height
             }
-            self?.tableView.reloadData()
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
         }
     }()
     public private(set) var topView: TopContentView!
@@ -50,7 +43,7 @@ public final class ContentTableViewController: UIViewController {
         setupView()
         setup()
     }
-    
+
     private func setupView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
@@ -58,7 +51,7 @@ public final class ContentTableViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
 
@@ -71,25 +64,18 @@ public final class ContentTableViewController: UIViewController {
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.refreshControl = viewController.refresh(sender: refreshControl, contentViewController: self) ? refreshControl : nil
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
-        
+
         addChild(viewController)
         viewController.didMove(toParent: self)
     }
-    
+
     @objc func refresh(sender: UIRefreshControl) {
         viewController.refresh(sender: sender, contentViewController: self)
     }
 }
 
-extension ContentTableViewController: UIScrollViewDelegate{
-    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        delegate?.didEndDragging(viewController: self, willDecelerate: decelerate)
-    }
-    
-    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        delegate?.didEndDecelerationg(viewController: self)
-    }
-    
+extension ContentTableViewController: UIScrollViewDelegate {
+
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate?.didScroll(viewController: self)
     }
@@ -99,20 +85,18 @@ extension ContentTableViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         2
     }
-    
+
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            return tableView.dequeueReusableCell(classType: ContentTopCell.self, for: indexPath)
+            return tableView.dequeueReusableCell(classType: ContentTopCell.self, for: indexPath) ?? UITableViewCell()
         } else {
-            let cell = tableView.dequeueReusableCell(classType: ContentBodyCell.self, for: indexPath)
-            if let bodyVC = viewController {
-                cell.prepare(viewController: bodyVC)
+            guard let cell = tableView.dequeueReusableCell(classType: ContentBodyCell.self, for: indexPath) else {
+                return UITableViewCell()
             }
+            cell.prepare(viewController: viewController)
             return cell
         }
     }
-    
-    
 }
 
 extension ContentTableViewController: UITableViewDelegate {
@@ -121,7 +105,7 @@ extension ContentTableViewController: UITableViewDelegate {
             _ = setupContentHeight
         }
     }
-    
+
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return topView.estimateHeight
@@ -158,5 +142,3 @@ public class ContentInnerTableView: UITableView {
         return super.hitTest(point, with: event)
     }
 }
-
-

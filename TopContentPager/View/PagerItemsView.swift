@@ -1,22 +1,16 @@
-//
-//  PagerItemsView.swift
-//  TopContentPager
-//
-//  Created by 田中厳貴 on 2021/01/08.
-//
-
 import UIKit
+import Resource
 
 public enum PagerItem {
     case text(TextItem)
     case image(ImageItem)
     case textAndImage(text: TextItem, image: ImageItem)
     case custom(PagerItemView)
-    
+
     public struct TextItem {
         let title: String
         let font: UIFont
-        
+
         public init(title: String, font: UIFont = UIFont.boldSystemFont(ofSize: 13)) {
             self.title = title
             self.font = font
@@ -27,32 +21,31 @@ public enum PagerItem {
         let image: UIImage?
         let size: CGSize
         let cornerRadius: CGFloat
-        
+
         public init(image: UIImage?, size: CGSize = CGSize(width: 24, height: 24), cornerRadius: CGFloat = 0) {
             self.image = image
             self.size = size
             self.cornerRadius = cornerRadius
         }
     }
-    
-    
 }
-
-
 
 final public class PagerItemsView: UIView {
 
     private var indicatorHeight: CGFloat = 2.0
+    private var indicatorDividerHeight: CGFloat = 1.0
     private var indicatorMinWidth: CGFloat = 0
     private var itemViewHeight: CGFloat = 20.0
     private var lineHeight: CGFloat = 2.0
     private var indicatorSideSpace: CGFloat = 0
+    private var pageIndex: Int = 0
 
     public var items: [PagerItem] = []
     public var itemViews: [PagerItemView] = []
     public private(set) var options: PagerOptions = .init()
 
     private var indicator: UIView!
+    private var indicatorDivider: UIView!
     private var frontView: UIView!
     private var lineView: UIView!
     private var maskLayer: CALayer!
@@ -69,7 +62,7 @@ final public class PagerItemsView: UIView {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     public func update(pagerOptions: UpdatePagerOptions) {
         options.itemHeight = pagerOptions.itemHeight ?? options.itemHeight
         options.indicatorHeight = pagerOptions.indicatorHeight ?? options.indicatorHeight
@@ -107,12 +100,13 @@ final public class PagerItemsView: UIView {
             itemView.configure(with: item)
             self.itemViews.append(itemView)
             self.addSubview(itemView)
+
         case .custom(let itemView):
             itemView.frame = CGRect(x: 0, y: 0, width: self.indicatorMinWidth, height: self.bounds.height)
             self.itemViews.append(itemView)
             self.addSubview(itemView)
         }
-        
+
         self.setNeedsLayout()
         updateView()
     }
@@ -122,13 +116,20 @@ final public class PagerItemsView: UIView {
     }
 
     func adjustSelected(page: Int) {
+        self.pageIndex = page
         self.itemViews.forEach {
             $0.isSelected = false
         }
         self.itemViews[safe: page]?.isSelected = true
-        UIView.animate(withDuration: 0.1, delay: 0, options: .beginFromCurrentState, animations: {
-            self.indicator.frame.origin.x = (CGFloat(page) * self.indicatorWidth) + self.indicatorSideSpace
-        }, completion: nil)
+        UIView.animate(
+            withDuration: 0.1,
+            delay: 0,
+            options: .beginFromCurrentState,
+            animations: {
+                self.indicator.frame.origin.x = (CGFloat(page) * self.indicatorWidth) + self.indicatorSideSpace
+            },
+            completion: nil
+        )
     }
 
     public func updatebadge(index: Int, isHidden: Bool) {
@@ -146,8 +147,16 @@ final public class PagerItemsView: UIView {
         self.frontView.frame = self.bounds
 
         self.indicator.frame = CGRect(
-            x: 0, y: self.frame.size.height - self.indicatorHeight,
-            width: self.indicatorWidth, height: self.indicatorHeight
+            x: (CGFloat(pageIndex) * self.indicatorWidth) + self.indicatorSideSpace,
+            y: self.frame.size.height - self.indicatorHeight,
+            width: self.indicatorWidth,
+            height: self.indicatorHeight
+        )
+        self.indicatorDivider.frame = CGRect(
+                x: 0,
+                y: self.frame.size.height - self.indicatorDividerHeight,
+                width: UIScreen.main.bounds.width,
+                height: self.indicatorDividerHeight
         )
         self.lineView.frame = CGRect(x: 0, y: self.frame.size.height - lineHeight, width: self.frame.width, height: lineHeight)
         self.maskLayer.frame = CGRect(x: 0, y: self.frame.size.height - lineHeight, width: self.frame.width, height: lineHeight)
@@ -164,15 +173,31 @@ private extension PagerItemsView {
         self.lineView = UIView(frame: CGRect(x: 0, y: self.frame.size.height - lineHeight, width: self.frame.width, height: lineHeight))
         self.addSubview(self.lineView)
 
-        self.indicator = UIView(frame:
-            CGRect(
-                x: 0, y: self.frame.size.height - self.indicatorHeight,
-                width: self.indicatorWidth, height: self.indicatorHeight
-            )
+        self.indicator = UIView(
+            frame:
+                CGRect(
+                    x: 0,
+                    y: self.frame.size.height - self.indicatorHeight,
+                    width: self.indicatorWidth,
+                    height: self.indicatorHeight
+                )
         )
         self.addSubview(self.indicator)
 
-        self.maskLayer = UIView(frame: CGRect(x: 0, y: self.frame.size.height - lineHeight, width: self.frame.width, height: lineHeight)).layer
+        self.indicatorDivider = UIView(
+            frame:
+                CGRect(
+                    x: 0,
+                    y: self.frame.size.height - self.indicatorHeight,
+                    width: UIScreen.main.bounds.width,
+                    height: self.indicatorDividerHeight
+                )
+        )
+        self.indicatorDivider.backgroundColor = Assets.Colors.blackAlpha200.color
+        self.addSubview(self.indicatorDivider)
+
+        self.maskLayer =
+            UIView(frame: CGRect(x: 0, y: self.frame.size.height - lineHeight, width: self.frame.width, height: lineHeight)).layer
         self.frontView.layer.mask = self.maskLayer
     }
 }

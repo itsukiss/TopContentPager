@@ -1,21 +1,14 @@
-//
-//  ContentBodyCell.swift
-//  TopContentPager
-//
-//  Created by 田中厳貴 on 2021/01/08.
-//
-
 import UIKit
 
 final class ContentBodyCell: UITableViewCell {
-    
+
     private weak var bodyViewController: UIViewController?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
     }
-    
+
     func prepare(viewController: UIViewController) {
         guard bodyViewController == nil else { return }
         bodyViewController = viewController

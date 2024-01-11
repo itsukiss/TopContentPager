@@ -1,10 +1,3 @@
-//
-//  PagerOptions.swift
-//  TopContentPager
-//
-//  Created by 田中厳貴 on 2021/01/08.
-//
-
 import UIKit
 
 final public class PagerOptions {
@@ -22,15 +15,17 @@ final public class PagerOptions {
 
     }
 
-    init(itemHeight: CGFloat = 44,
-                indicatorHeight: CGFloat = 2,
-                indicatorColor: UIColor = UIColor.black,
-                activeBackgroundColor: UIColor = UIColor.clear,
-                backgroundColor: UIColor = UIColor.white,
-                lineColor: UIColor = UIColor.white,
-                deactiveLabelColor: UIColor = UIColor.gray,
-                activeLabelColor: UIColor = UIColor.black,
-                indicatorSideSpace: CGFloat = 0) {
+    init(
+        itemHeight: CGFloat = 44,
+        indicatorHeight: CGFloat = 2,
+        indicatorColor: UIColor = UIColor.black,
+        activeBackgroundColor: UIColor = UIColor.clear,
+        backgroundColor: UIColor = UIColor.white,
+        lineColor: UIColor = UIColor.white,
+        deactiveLabelColor: UIColor = UIColor.gray,
+        activeLabelColor: UIColor = UIColor.black,
+        indicatorSideSpace: CGFloat = 0
+    ) {
         self.itemHeight = itemHeight
         self.indicatorHeight = indicatorHeight
         self.indicatorColor = indicatorColor
@@ -53,18 +48,20 @@ final public class UpdatePagerOptions {
     public var deactiveLabelColor: UIColor?
     public var activeLabelColor: UIColor?
     public var indicatorSideSpace: CGFloat?
-    
-    public init() { }
-    
-    public init(itemHeight: CGFloat? = nil,
-                indicatorHeight: CGFloat? = nil,
-                indicatorColor: UIColor? = nil,
-                activeBackgroundColor: UIColor? = nil,
-                backgroundColor: UIColor? = nil,
-                lineColor: UIColor? = nil,
-                deactiveLabelColor: UIColor? = nil,
-                activeLabelColor: UIColor? = nil,
-                indicatorSideSpace: CGFloat? = nil) {
+
+    public init() {}
+
+    public init(
+        itemHeight: CGFloat? = nil,
+        indicatorHeight: CGFloat? = nil,
+        indicatorColor: UIColor? = nil,
+        activeBackgroundColor: UIColor? = nil,
+        backgroundColor: UIColor? = nil,
+        lineColor: UIColor? = nil,
+        deactiveLabelColor: UIColor? = nil,
+        activeLabelColor: UIColor? = nil,
+        indicatorSideSpace: CGFloat? = nil
+    ) {
         self.itemHeight = itemHeight
         self.indicatorHeight = indicatorHeight
         self.indicatorColor = indicatorColor
