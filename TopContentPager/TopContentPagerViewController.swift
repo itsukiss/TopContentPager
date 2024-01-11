@@ -1,10 +1,3 @@
-//
-//  TopContentPagerViewController.swift
-//  TopContentPager
-//
-//  Created by 田中厳貴 on 2021/01/08.
-//
-
 import UIKit
 
 public protocol TopContentPagerDataSource: AnyObject {
@@ -14,25 +7,36 @@ public protocol TopContentPagerDataSource: AnyObject {
 
 @objc public protocol TopContentPagerDelegate: AnyObject {
     @objc optional func topContentPagerViewControllerTabTopMargin(_ viewController: TopContentPagerViewController) -> CGFloat
+    /// 画面の下部までスクロールしたことを検知する
+    func didScrollBottom(selectIndex: Int)
+    /// Tabの切り替えを検知する
+    func changeSelectedIndex(selectIndex: Int)
 }
 
-class EscapeView: UIView { }
+class EscapeView: UIView {}
 
 open class TopContentPagerViewController: UIViewController, UIGestureRecognizerDelegate {
-    
+
     public weak var dataSource: TopContentPagerDataSource?
     public weak var delegate: TopContentPagerDelegate?
     public var selectedViewController: ContentTableViewController {
-            viewControllers[selectedIndex]
+        viewControllers[selectedIndex]
     }
     public var selectedIndex: Int = 0 {
         didSet {
             contentOffsetX = scrollView.contentOffset.x
             addContentViewToEscapeView()
             topView.tabView?.adjustSelected(page: selectedIndex)
-            UIView.animate(withDuration: 0.25, animations: {
-                self.scrollView.setContentOffset(CGPoint(x: self.scrollView.bounds.size.width * CGFloat(self.selectedIndex), y: 0), animated: false)
-            }) { _ in
+            delegate?.changeSelectedIndex(selectIndex: selectedIndex)
+            UIView.animate(
+                withDuration: 0.25,
+                animations: {
+                    self.scrollView.setContentOffset(
+                        CGPoint(x: self.scrollView.bounds.size.width * CGFloat(self.selectedIndex), y: 0),
+                        animated: false
+                    )
+                }
+            ) { _ in
                 self.contentOffsetX = self.scrollView.contentOffset.x
                 if let constant = self.escapeViewTopConstraint?.constant, -(self.topView.frame.height - self.tabHeight) < constant {
                     self.addContentViewToCell()
@@ -40,7 +44,7 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
             }
         }
     }
-    
+
     public private(set) var viewControllers: [ContentTableViewController] = []
     public private(set) var tabHeight: CGFloat!
     public private(set) var headerHeight: CGFloat!
@@ -58,6 +62,7 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
     private var containerViews: [UIView] = []
     private var tabBarTitles: [PagerItem] = []
     private var contentOffsetX: CGFloat = 0
+    private var isEnablePaging: Bool = true
     private lazy var setupLayout: Void = {
         tabBarTitles.forEach { topView.tabView?.addItem(item: $0) }
         selectedIndex = 0
@@ -90,8 +95,8 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
         }
         _ = setupLayout
     }
-    
-    open func setupWillLoadDataSource() { }
+
+    open func setupWillLoadDataSource() {}
 
     public func updateHeader() {
         escapeViewHeightConstraint?.constant = topView.estimateHeight
@@ -105,7 +110,7 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
         escapeViewHeightConstraint?.constant = topView.estimateHeight
         escapeView.layoutIfNeeded()
     }
-    
+
     private func loadDataSource(dataSource: TopContentPagerDataSource) {
         topView = dataSource.topContentPagerViewControllerTopContentView(self)
         topView.delegate = self
@@ -119,7 +124,7 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
             viewControllers.append(contentVC)
         }
     }
-    
+
     private func setup() {
         scrollView.delegate = self
         scrollView.isPagingEnabled = true
@@ -135,7 +140,7 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
         ])
 
         scrollContainerView.translatesAutoresizingMaskIntoConstraints = false
@@ -145,8 +150,8 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
             scrollContainerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             scrollContainerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             scrollContainerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-                                        scrollContainerView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
-            scrollContainerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: CGFloat(viewControllers.count))
+            scrollContainerView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
+            scrollContainerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: CGFloat(viewControllers.count)),
         ])
 
         viewControllers.enumerated().forEach { index, vc in
@@ -156,12 +161,14 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
             switch index {
             case 0:
                 constraints.append(vc.view.leadingAnchor.constraint(equalTo: scrollContainerView.leadingAnchor))
+
             case viewControllers.count - 1:
                 guard let previousVC = viewControllers[safe: index - 1] else { return }
                 constraints.append(contentsOf: [
                     vc.view.trailingAnchor.constraint(equalTo: scrollContainerView.trailingAnchor),
-                    vc.view.leadingAnchor.constraint(equalTo: previousVC.view.trailingAnchor)
+                    vc.view.leadingAnchor.constraint(equalTo: previousVC.view.trailingAnchor),
                 ])
+
             default:
                 guard let previousVC = viewControllers[safe: index - 1] else { return }
                 constraints.append(vc.view.leadingAnchor.constraint(equalTo: previousVC.view.trailingAnchor))
@@ -169,7 +176,7 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
             constraints.append(contentsOf: [
                 vc.view.topAnchor.constraint(equalTo: scrollContainerView.topAnchor),
                 vc.view.bottomAnchor.constraint(equalTo: scrollContainerView.bottomAnchor),
-                vc.view.widthAnchor.constraint(equalToConstant: view.frame.width)
+                vc.view.widthAnchor.constraint(equalToConstant: view.frame.width),
             ])
             addChild(vc)
             vc.didMove(toParent: self)
@@ -186,30 +193,30 @@ open class TopContentPagerViewController: UIViewController, UIGestureRecognizerD
             escapeViewTopConstraint!,
             escapeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             escapeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            escapeViewHeightConstraint!
+            escapeViewHeightConstraint!,
         ])
-        
+
         safeAreaBar.translatesAutoresizingMaskIntoConstraints = false
         safeAreaBar.isUserInteractionEnabled = false
         safeAreaBar.backgroundColor = .white
         safeAreaBar.clipsToBounds = true
         view.addSubview(safeAreaBar)
-        
+
         NSLayoutConstraint.activate([
             safeAreaBar.topAnchor.constraint(equalTo: view.topAnchor),
             safeAreaBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             safeAreaBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            safeAreaBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+            safeAreaBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
         ])
     }
-    
+
     @objc private func tapTab(_ sender: UITapGestureRecognizer) {
         guard let tabView = topView.tabView else { return }
         let position = sender.location(in: self.topView.tabView)
         if position.y < tabView.frame.size.height - tabView.options.itemHeight {
             return
         }
-        
+
         let index = Int(floor(position.x / (tabView.frame.size.width / max(CGFloat(tabView.items.count), 1))))
         self.selectedIndex = index
     }
@@ -256,7 +263,7 @@ extension TopContentPagerViewController: UIScrollViewDelegate {
             addContentViewToCell()
         }
     }
-    
+
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.x != contentOffsetX {
             scrollView.contentOffset.y = 0
@@ -275,29 +282,35 @@ extension TopContentPagerViewController: UIScrollViewDelegate {
 }
 
 extension TopContentPagerViewController: ContentTableViewDelegate {
-    
-    public func didEndDragging(viewController: ContentTableViewController, willDecelerate decelerate: Bool) {
-        guard !decelerate, viewController == self.selectedViewController else { return }
-        self.tableViewsScroll()
-    }
-    
-    public func didEndDecelerationg(viewController: ContentTableViewController) {
-        guard viewController == self.selectedViewController else { return }
-        self.tableViewsScroll()
-    }
-    
+
     public func didScroll(viewController: ContentTableViewController) {
         guard viewController == self.selectedViewController else { return }
+        self.tableViewsScroll()
         if selectedViewController.tableView.contentOffset.y > self.topView.frame.height - self.tabHeight {
             self.addContentViewToEscapeView()
         } else {
             self.addContentViewToCell()
+        }
+
+        let tableviewContentHeight = selectedViewController.tableView.contentSize.height
+        let frameHeight = scrollView.frame.size.height
+        let contentOffsetY = selectedViewController.tableView.contentOffset.y
+        let loadingViewHeight = 20.0
+        if tableviewContentHeight - frameHeight - contentOffsetY - loadingViewHeight <= 0 {
+            if isEnablePaging {
+                self.isEnablePaging = false
+                delegate?.didScrollBottom(selectIndex: selectedIndex)
+            }
+        } else {
+            self.isEnablePaging = true
         }
     }
 }
 
 extension TopContentPagerViewController: TopContentViewDelegate {
     func needsReload() {
-        updateHeader()
+        DispatchQueue.main.async {
+            self.updateHeader()
+        }
     }
 }
